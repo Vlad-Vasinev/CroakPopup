@@ -60,6 +60,9 @@ to your desirable popup elements
 <div data-croak-container>
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
+
+  <img src="content/yourimage.png" data-el>
+  <img src="content/yourimage.png" data-el>
   <img src="content/yourimage.png" data-el>
 </div>
 ```
@@ -70,6 +73,11 @@ to your desirable popup elements
 <div data-croak-container>
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
+
+  <img src="content/yourimage.png" data-el>
+  <div data-el data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
+    <img src="content/yourimage.jpg">
+  </div>
   <img src="content/yourimage.png" data-el>
   <div data-el data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
     <img src="content/yourimage.jpg">
