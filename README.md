@@ -28,33 +28,33 @@
 </div>
 ```
 
-1. Add following attribute: data-el
+3. Add following attribute: data-el
 ```
 data-el
 ```
 to your desirable popup elements
 
-2. Fill your popup element with img:
+4. Fill your popup element with img:
 ```
 <img src="slider/yourimage.jpg" data-el>
 ```
-2. Video(img inside div as a preview)
+5. Video(img inside div as a preview)
 ```
 <div data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
   <img src="slider/yourimage.jpg">
 </div>
 ```
-2. Video(you can use img and put **data-video-el** to specify video element):
+6. Video(you can use img and put **data-video-el** to specify video element):
 ```
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
 ```
 
-4. Add the "marker" to your HTML, it allows Croak to count slides properly
+7. Add the "marker" to your HTML, it allows Croak to count slides properly
 ```
 <hr class="marker">
 ```
 
-5. Your basic HTML for images only:
+8. Your basic HTML for images only:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -64,7 +64,7 @@ to your desirable popup elements
 </div>
 ```
 
-5. Your basic HTML for images + video:
+9. Your basic HTML for images + video:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -77,7 +77,7 @@ to your desirable popup elements
 </div>
 ```
 
-6. Create basic popup essence:
+10. Create basic popup essence:
 ```
 let frog22 = new croakSlider({
   stories: {
@@ -95,7 +95,7 @@ let frog22 = new croakSlider({
 });
 ```
 
-7. use 
+11. use 
 - customGapValue
 - customScaleValue
 - customOpacityValue 
