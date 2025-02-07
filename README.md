@@ -44,7 +44,7 @@ to your desirable popup elements
   <img src="slider/yourimage.jpg">
 </div>
 ```
-6. Video(you can use img and put **data-video-el** to specify video element):
+6. Video(you can use img and put `data-video-el` to specify video element):
 ```
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
 ```
