@@ -87,7 +87,7 @@ to your desirable popup elements
 
 10. Create basic popup essence:
 ```
-let frog22 = new croakSlider({
+let frog = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
     customGap: {
