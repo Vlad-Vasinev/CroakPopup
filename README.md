@@ -111,8 +111,8 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 
 # How does it work?
 
-- the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as "el"
-and galleri wrapper, aka as "storiesGallery"
+- the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as **`el`**
+and galleri wrapper, aka as **`storiesGallery`**
 - simply put, the function counts the distance between the marker and the element's distance from the right screen corner
 
 - whole function's code: 
