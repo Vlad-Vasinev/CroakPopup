@@ -28,7 +28,7 @@
 </div>
 ```
 
-3. Add following attribute: data-el
+3. Add following attribute: **`data-el`**
 ```
 data-el
 ```
