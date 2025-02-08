@@ -17,9 +17,9 @@ import { appHeight } from "./functions/appResize.js"
 class croakSlider {
   constructor(object) {
     this.stories = false
-    this.customGap
-    this.customScale
-    this.customOpacity
+    this.gap
+    this.scale
+    this.opacity
     this.DOMElement
 
     Object.entries(object).forEach((element) => {
@@ -29,14 +29,14 @@ class croakSlider {
         if(element[1].DOMElement) {
           this.DOMElement = element[1].DOMElement
         }
-        if(element[1].customGap) {
-          this.customGap = `${element[1].customGap.customGapValue}px`
+        if(element[1].gap) {
+          this.gap = `${element[1].gap.gapValue}px`
         }
-        if(element[1].customScale) {
-          this.customScale = element[1].customScale.customScaleValue
+        if(element[1].scale) {
+          this.scale = element[1].scale.scaleValue
         }
-        if(element[1].customOpacity) {
-          this.customOpacity = element[1].customOpacity.customOpacityValue
+        if(element[1].opacity) {
+          this.opacity = element[1].opacity.opacityValue
         }
       }
     })
@@ -54,8 +54,8 @@ class croakSlider {
               disableScroll()
             }, 350)
 
-            let storiesGalleri = storiesGallery(this.customGap)
-            fillSlider(array, storiesGalleri, this.customScale)
+            let storiesGalleri = storiesGallery(this.gap)
+            fillSlider(array, storiesGalleri, this.scale)
 
             let storiesOut = storiesExitBtn()
             let storiesContainer = storiesContainerEl()
@@ -66,7 +66,7 @@ class croakSlider {
             storiesContainer.appendChild(storiesWrapper)
             storiesWrapper.appendChild(storiesGalleri)
             storiesContainer.appendChild(storiesOut)
-            storiesContainer.style.setProperty('--galleri-opacity', this.customOpacity)
+            storiesContainer.style.setProperty('--galleri-opacity', this.opacity)
 
             if(storiesGalleri) {
               document.querySelectorAll('.galleri .galleri__el').forEach(element => {
@@ -167,14 +167,14 @@ window.addEventListener('resize', appHeight)
 let frog22 = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
-    customGap: {
-      customGapValue: 160
+    gap: {
+      gapValue: 50
     },
-    customScale: {
-      customScaleValue: 1.25
+    scale: {
+      scaleValue: .75
     },
-    customOpacity: {
-      customOpacityValue: 0.95
+    opacity: {
+      opacityValue: 0.95
     }
   },
 });
