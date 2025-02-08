@@ -22,7 +22,7 @@ export function rightMovement(storiesGalleri) {
     let nextBtn = storiesGalleri.parentElement.parentElement.querySelector('.stories-next')
     nextBtn.setAttribute('disabled', true)
     nextBtn.classList.add('btn_disabled')
-    nextBtn.classList.add('stories-el_active')
+    //nextBtn.classList.add('stories-el_active')
   }
 
   if(elActiveIn < (lengthEl - 1)) {
