@@ -94,7 +94,7 @@ let frog = new croakSlider({
       customGapValue: 160
     },
     customScale: {
-      customScaleValue: 1.25
+      customScaleValue: .75
     },
     customOpacity: {
       customOpacityValue: 0.95
