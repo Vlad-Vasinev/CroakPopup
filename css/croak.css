@@ -121,13 +121,14 @@ html {
   object-fit: cover;
 }
 
-.galleri-stories {
+.galleri-opened {
   flex-direction: row;
   gap: calc(var(--galleri-gap));
   left: 0;
   right: 0;
   justify-content: center;
   margin: 0 auto;
+  height: 100%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -144,7 +145,7 @@ html {
 
 @media(max-width: 1200px) {
 
-  .galleri-stories {
+  .galleri-opened {
     gap: 90px;
     margin: unset;
     width: 100%;
@@ -257,7 +258,7 @@ html {
   top: 50%;
   transform: translateY(-50%);
   left: 0;
-  height: calc(333.3333333333px + 166.6666666667 * (100vw - 1280px) / 640);
+  height: calc(233.3333333333px + 116.6666666667 * (100vw - 1280px) / 640);
   right: 0;
   margin: 0 auto;
   z-index: 1;
@@ -292,8 +293,8 @@ html {
     margin-top: 0;
   }
 
-  .galleri-stories {
-    gap: 20px;
+  .galleri-opened {
+    gap: 0;
     margin: unset;
     width: 100%;
   }
@@ -302,10 +303,6 @@ html {
     margin-top: 0;
     border-radius: 12px;
     transform: scale( calc(var(--img-scale) - (var(--img-scale) / 5)) );
-  }
-
-  .galleri__el.stories-el_active {
-    transform: scale(var(--img-scale));
   }
 
   .stories-prev, .stories-next {
@@ -318,8 +315,9 @@ html {
 
   .galleri__el {
     width: 100%;
-    max-height: 350px;
-    border-radius: 0;
+    max-height: unset;
+    height: 100vh;
+    border-radius: 12px;
   }  
 
   [data-croak-container] {
@@ -336,9 +334,9 @@ html {
   }
 
   .stories-wrapper {
-    padding: 0 20px;
+    padding: 0;
     overflow: hidden;
-    height: 350px;
+    height: 100vh;
   }
 
   [data-croak-container] div img  {
