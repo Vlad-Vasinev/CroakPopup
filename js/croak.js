@@ -96,10 +96,15 @@ class croakSlider {
           
               if(Math.abs(diffX - diffY) > 0 && Math.abs(diffX) > dist) {
                 if(diffX > 0) {
+                  if(window.countIndex === storiesGalleri.querySelectorAll('.galleri__el').length - 1) { 
+                    return
+                  }
                   rightMovement(storiesGalleri)
                 }
                 else if(diffX < 0){
-                  console.log('move left')
+                  if(window.countIndex === 0) { 
+                    return
+                  }
                   leftMovement(storiesGalleri)
                 }
               }
