@@ -1,10 +1,10 @@
 
-export function fillSlider (array, storiesGalleri, customScale) {
+export function fillSlider (array, storiesGalleri, scale) {
   array.forEach((item) => {
 
     let storiesEl = document.createElement('div')
     storiesEl.classList.add('galleri__el')
-    storiesEl.style.setProperty('--img-scale', customScale)
+    storiesEl.style.setProperty('--img-scale', scale)
 
     if(item.hasAttribute('data-video-el')) {
       let storiesElVideo = document.createElement('video')
