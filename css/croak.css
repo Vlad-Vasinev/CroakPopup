@@ -156,7 +156,7 @@ html {
   }
 
   .galleri__el:hover {
-    border: 
+    border: none;
   }
 
 }
