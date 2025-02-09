@@ -15,6 +15,10 @@ export function fillSlider (array, storiesGalleri, scale, mobVideo) {
       if(window.innerWidth <= 768 && mobVideo) {
         sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
         sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+
+        storiesElVideo.muted = "muted"
+        storiesElVideo.style.width = "100%"
+        storiesElVideo.controls = true
       }
       else {
         sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
