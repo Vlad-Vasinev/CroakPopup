@@ -21,6 +21,7 @@ class croakSlider {
     this.scale
     this.opacity
     this.DOMElement
+    this.mobileVideo = false
 
     Object.entries(object).forEach((element) => {
       if(element[0] === "stories") {
@@ -30,16 +31,21 @@ class croakSlider {
           this.DOMElement = element[1].DOMElement
         }
         if(element[1].gap) {
-          this.gap = `${element[1].gap.gapValue}px`
+          this.gap = `${element[1].gap}px`
         }
         if(element[1].scale) {
-          this.scale = element[1].scale.scaleValue
+          this.scale = element[1].scale
         }
         if(element[1].opacity) {
-          this.opacity = element[1].opacity.opacityValue
+          this.opacity = element[1].opacity
+        }
+        if(element[1].mobileVideo === true) {
+          this.mobileVideo = true
         }
       }
     })
+
+    console.log(this.mobileVideo)
 
     window.countIndex = undefined
     if(this.DOMElement) {
@@ -55,7 +61,7 @@ class croakSlider {
             }, 350)
 
             let storiesGalleri = storiesGallery(this.gap)
-            fillSlider(array, storiesGalleri, this.scale)
+            fillSlider(array, storiesGalleri, this.scale, this.mobileVideo)
 
             let storiesOut = storiesExitBtn()
             let storiesContainer = storiesContainerEl()
@@ -172,14 +178,9 @@ window.addEventListener('resize', appHeight)
 let frog22 = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
-    gap: {
-      gapValue: 50
-    },
-    scale: {
-      scaleValue: .75
-    },
-    opacity: {
-      opacityValue: 0.95
-    }
+    gap: 50,
+    scale: .75,
+    opacity: 0.95,
+    mobileVideo: true
   },
 });
