@@ -99,9 +99,9 @@ let frog = new croakSlider({
 ```
 
 11. use 
-- customGapValue
-- customScaleValue
-- customOpacityValue 
+- gap
+- scale
+- opacity 
 in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`** of the background respectively
 
 # How does it work?
