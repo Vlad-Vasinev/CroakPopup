@@ -90,15 +90,10 @@ to your desirable popup elements
 let frog = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
-    customGap: {
-      customGapValue: 160
-    },
-    customScale: {
-      customScaleValue: .75
-    },
-    customOpacity: {
-      customOpacityValue: 0.95
-    }
+    gap: 50,
+    scale: .75,
+    opacity: 0.95,
+    mobileVideo: true
   },
 });
 ```
