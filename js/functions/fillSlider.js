@@ -1,5 +1,5 @@
 
-export function fillSlider (array, storiesGalleri, scale) {
+export function fillSlider (array, storiesGalleri, scale, mobVideo) {
   array.forEach((item) => {
 
     let storiesEl = document.createElement('div')
@@ -10,15 +10,23 @@ export function fillSlider (array, storiesGalleri, scale) {
       let storiesElVideo = document.createElement('video')
 
       let sourceElement1 = document.createElement('source')
-      sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
-      sourceElement1.setAttribute('type', 'video/mp4')
-
       let sourceElement2 = document.createElement('source')
-      sourceElement2.setAttribute('src', item.getAttribute('data-src-webm'))
-      sourceElement2.setAttribute('type', 'video/webm')
+
+      if(window.innerWidth <= 768 && mobVideo) {
+        sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
+        sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+      }
+      else {
+        sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
+        sourceElement1.setAttribute('type', 'video/mp4')
+  
+        sourceElement2.setAttribute('src', item.getAttribute('data-src-webm'))
+        sourceElement2.setAttribute('type', 'video/webm')
+      }
 
       storiesElVideo.setAttribute('loop', true)
       storiesElVideo.setAttribute('playsinline', true)
+      //storiesElVideo.setAttribute('poster', "../../content/preload.png")
 
       // storiesElVideo.muted = "muted"
       // storiesElVideo.style.width = "100%"
