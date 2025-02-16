@@ -13,14 +13,14 @@
 
 # Let's get started
 
-1. Add croak container
+1. Add croak container:
 ```
 <div data-croak-container>
 
 </div>
 ```
 
-2. Add control buttons if you need it
+2. Add control buttons(optional):
 ```
 <div data-croak-container>
   <button class="stories-prev"></button>
