@@ -49,7 +49,15 @@
 
 5. Add **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
 ```
-<img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
+<img
+  src="slider/yourimage.jpg"
+
+  data-video-el
+  data-src-webm="slider/yourvideo.webm"
+  data-src-mp4="slider/yourvideo.mp4"
+  data-src-mob-mp4="content/yourvideo.mp4"
+  data-src-mob-webm="content/yourvideo.webm"
+>
 ```
 
 6. Add the "marker" to your HTML:
