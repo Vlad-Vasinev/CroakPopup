@@ -33,7 +33,7 @@
 <img src="slider/yourimage.jpg" data-el>
 ```
 
-4. Add **`data-el`**, **`data-src`** attributes to specify **`video`** elements:
+4. Add **`data-el`**, **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
 ```
 <div data-el
   data-video-el
