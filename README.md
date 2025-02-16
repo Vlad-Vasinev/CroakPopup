@@ -28,22 +28,23 @@
 </div>
 ```
 
-3. Add following attribute: **`data-el`**
+3. Add following attribute: **`data-el`** to your desirable popup elements
 ```
 data-el
 ```
-to your desirable popup elements
 
 4. Fill your popup element with img:
 ```
 <img src="slider/yourimage.jpg" data-el>
 ```
+
 5. Video(img inside div as a preview)
 ```
 <div data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
   <img src="slider/yourimage.jpg">
 </div>
 ```
+
 6. Video(you can use img and put **`data-video-el`** to specify video element):
 ```
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
