@@ -28,34 +28,36 @@
 </div>
 ```
 
-3. Add **`data-el`** attribute to your popup elements:
-```
-data-el
-```
-
-4. Fill your popup element with img:
+3. Add **`data-el`** attribute to your **`img`** elements:
 ```
 <img src="slider/yourimage.jpg" data-el>
 ```
 
-5. Video(img inside div as a preview)
+4. Add **`data-el`** attribute to your **`video`** elements:
 ```
-<div data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
-  <img src="slider/yourimage.jpg">
+<div data-el
+  data-video-el
+  data-src-webm="content/yourvideo.webm"
+  data-src-mp4="content/yourvideo.mp4"
+  data-src-mob-mp4="content/yourvideo.mp4"
+  data-src-mob-mp4="content/yourvideo.webm"
+  >
+
+  <img src="content/yourimage.jpg">
 </div>
 ```
 
-6. Video(you can use img and put **`data-video-el`** to specify video element):
+5. Add **`data-el`** and **`data-video-el`** attributes to your **`img`** to specify video elements:
 ```
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
 ```
 
-7. Add the "marker" to your HTML:
+6. Add the "marker" to your HTML:
 ```
 <hr class="marker">
 ```
 
-8. Your basic HTML for images only:
+7. Your basic HTML for images only:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -68,7 +70,7 @@ data-el
 </div>
 ```
 
-9. Your basic HTML for images + video:
+8. Your basic HTML for images + video:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -86,7 +88,7 @@ data-el
 </div>
 ```
 
-10. Create basic popup essence:
+9. Create basic popup essence:
 ```
 let frog = new croakSlider({
   stories: {
@@ -99,7 +101,7 @@ let frog = new croakSlider({
 });
 ```
 
-11. use 
+10. use 
 - gap
 - scale
 - opacity 
