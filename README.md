@@ -40,7 +40,7 @@
   data-src-webm="content/yourvideo.webm"
   data-src-mp4="content/yourvideo.mp4"
   data-src-mob-mp4="content/yourvideo.mp4"
-  data-src-mob-mp4="content/yourvideo.webm"
+  data-src-mob-webm="content/yourvideo.webm"
   >
 
   <img src="content/yourimage.jpg">
@@ -64,9 +64,9 @@
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
 
-  <img src="content/yourimage.png" data-el>
-  <img src="content/yourimage.png" data-el>
-  <img src="content/yourimage.png" data-el>
+  <img src="content/yourimage1.png" data-el>
+  <img src="content/yourimage2.png" data-el>
+  <img src="content/yourimage3.png" data-el>
 </div>
 ```
 
@@ -77,13 +77,26 @@
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
 
-  <img src="content/yourimage.png" data-el>
-  <div data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
-    <img src="content/yourimage.jpg">
+  <img src="content/yourimage1.png" data-el>
+  <div
+    data-video-el
+    data-src-webm="content/yourvideo1.webm"
+    data-src-mp4="content/yourvideo1.mp4">
+    data-src-mob-mp4="content/yourvideo1.mp4"
+    data-src-mob-webm="content/yourvideo1.webm"
+
+    <img src="content/yourimage1.jpg">
   </div>
-  <img src="content/yourimage.png" data-el>
-  <div data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
-    <img src="content/yourimage.jpg">
+
+  <img src="content/yourimage2.png" data-el>
+  <div
+    data-video-el
+    data-src-webm="content/yourvideo2.webm"
+    data-src-mp4="content/yourvideo2.mp4">
+    data-src-mob-mp4="content/yourvideo2.mp4"
+    data-src-mob-webm="content/yourvideo2.webm"
+
+    <img src="content/yourimage2.jpg">
   </div>
 </div>
 ```
