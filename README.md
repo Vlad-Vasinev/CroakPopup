@@ -28,7 +28,7 @@
 </div>
 ```
 
-3. Add **`data-el`** attribute to your **`img`** elements:
+3. Add **`data-el`** attribute to specify **`img`** elements:
 ```
 <img src="slider/yourimage.jpg" data-el>
 ```
