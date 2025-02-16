@@ -252,6 +252,13 @@ html {
   object-fit: cover;
 }
 
+[data-croak-container] [data-video-el] {
+  border-radius: 50%;
+  width: calc(66.6666666667px + 33.3333333333 * (100vw - 1280px) / 640);
+  height: calc(66.6666666667px + 33.3333333333 * (100vw - 1280px) / 640);
+  object-fit: cover;
+}
+
 .stories-wrapper {
   width: 100%;
   position: absolute;
@@ -329,6 +336,11 @@ html {
   }
 
   [data-croak-container] [data-el] {
+    width: 100px;
+    height: 100px;
+  }
+
+  [data-croak-container] [data-video-el] {
     width: 100px;
     height: 100px;
   }
