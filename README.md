@@ -33,7 +33,7 @@
 <img src="slider/yourimage.jpg" data-el>
 ```
 
-4. Add **`data-el`**, **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
+4. Add **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
 ```
 <div data-el
   data-video-el
@@ -47,7 +47,7 @@
 </div>
 ```
 
-5. Add **`data-el`**, **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
+5. Add **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
 ```
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
 ```
