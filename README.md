@@ -50,7 +50,7 @@ data-el
 <img src="slider/yourimage.jpg" data-el data-video-el data-src-webm="slider/yourvideo.webm" data-src-mp4="slider/yourvideo.mp4">
 ```
 
-7. Add the "marker" to your HTML, it allows Croak to count slides properly
+7. Add the "marker" to your HTML:
 ```
 <hr class="marker">
 ```
