@@ -51,7 +51,7 @@ class croakSlider {
     if(this.DOMElement) {
 
       document.querySelectorAll(this.DOMElement).forEach((elContainer) => {
-        elContainer.querySelectorAll('[data-el]').forEach((elSlider, index, array) => {
+        elContainer.querySelectorAll('[data-el], [data-video-el]').forEach((elSlider, index, array) => {
           elSlider.addEventListener('click', () => {
             console.log(elSlider + `${index}`)
 
@@ -175,7 +175,7 @@ class croakSlider {
 appHeight()
 window.addEventListener('resize', appHeight)
 
-let frog22 = new croakSlider({
+let frog = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
     gap: 50,
