@@ -28,7 +28,7 @@
 </div>
 ```
 
-3. Add following attribute: **`data-el`** to your desirable popup elements
+3. Add **`data-el`** attribute to your popup elements:
 ```
 data-el
 ```
