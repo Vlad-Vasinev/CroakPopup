@@ -35,7 +35,7 @@
 
 4. Add **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
 ```
-<div data-el
+<div
   data-video-el
   data-src-webm="content/yourvideo.webm"
   data-src-mp4="content/yourvideo.mp4"
@@ -78,11 +78,11 @@
   <button class="stories-next"></button>
 
   <img src="content/yourimage.png" data-el>
-  <div data-el data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
+  <div data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
     <img src="content/yourimage.jpg">
   </div>
   <img src="content/yourimage.png" data-el>
-  <div data-el data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
+  <div data-video-el data-src-webm="content/yourvideo.webm" data-src-mp4="content/yourvideo.mp4">
     <img src="content/yourimage.jpg">
   </div>
 </div>
