@@ -128,6 +128,8 @@ let frog = new croakSlider({
 - opacity 
 in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`** of the background respectively
 
+11. You have done it🥰
+
 # How does it work?
 
 - the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as **`el`**
