@@ -155,5 +155,5 @@ function getDistanceStories(el, galleriEssence) {
 # Code Examples:
 
 - https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL
-- 
+- https://codepen.io/Vlad_Vasinev/pen/ByaKboN
 - 
