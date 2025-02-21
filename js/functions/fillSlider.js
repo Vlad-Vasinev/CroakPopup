@@ -1,10 +1,22 @@
 
-export function fillSlider (array, storiesGalleri, scale, mobVideo) {
+export function fillSlider (array, storiesGalleri, scale, mobVideo, deskStories) {
+  
+  //console.log(array)
+  
   array.forEach((item) => {
 
     let storiesEl = document.createElement('div')
-    storiesEl.classList.add('galleri__el')
-    storiesEl.style.setProperty('--img-scale', scale)
+    // storiesEl.classList.add('galleri__el')
+    // storiesEl.style.setProperty('--img-scale', scale)
+    if(deskStories && window.innerWidth >= 768) {
+      storiesEl.classList.add('galleri__el')
+      storiesEl.classList.add('galleri__el_stories')
+      storiesEl.style.setProperty('--img-scale', scale)
+    }
+    else {
+      storiesEl.classList.add('galleri__el')
+      storiesEl.style.setProperty('--img-scale', scale)
+    }
 
     if(item.hasAttribute('data-video-el')) {
       let storiesElVideo = document.createElement('video')
@@ -12,15 +24,34 @@ export function fillSlider (array, storiesGalleri, scale, mobVideo) {
       let sourceElement1 = document.createElement('source')
       let sourceElement2 = document.createElement('source')
 
-      if(window.innerWidth <= 768 && mobVideo) {
-        sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
-        sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+      if(mobVideo) {
 
-        storiesElVideo.muted = "muted"
-        storiesElVideo.style.width = "100%"
-        storiesElVideo.controls = true
+        if(window.innerWidth <= 768) {
+          sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
+          sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+  
+          storiesElVideo.muted = "muted"
+          storiesElVideo.style.width = "100%"
+          storiesElVideo.controls = true
+        }
+        else {
+          sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
+          sourceElement1.setAttribute('type', 'video/mp4')
+    
+          sourceElement2.setAttribute('src', item.getAttribute('data-src-webm'))
+          sourceElement2.setAttribute('type', 'video/webm')
+        }
+
       }
-      else {
+
+      if(deskStories) { 
+        sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
+        sourceElement1.setAttribute('type', 'video/mp4')
+        sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+        sourceElement2.setAttribute('type', 'video/webm')
+      }
+
+      if(!deskStories && !mobVideo) {
         sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
         sourceElement1.setAttribute('type', 'video/mp4')
   
@@ -31,10 +62,6 @@ export function fillSlider (array, storiesGalleri, scale, mobVideo) {
       storiesElVideo.setAttribute('loop', true)
       storiesElVideo.setAttribute('playsinline', true)
       //storiesElVideo.setAttribute('poster', "../../content/preload.png")
-
-      // storiesElVideo.muted = "muted"
-      // storiesElVideo.style.width = "100%"
-      // storiesElVideo.controls = true
 
       storiesElVideo.appendChild(sourceElement1)
       storiesElVideo.appendChild(sourceElement2)
