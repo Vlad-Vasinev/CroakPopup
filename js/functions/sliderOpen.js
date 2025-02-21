@@ -20,7 +20,6 @@ export function sliderOpen (storiesGalleri) {
         storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.remove('btn_disabled')
       }
       if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
-        console.log(window.countIndex)
         storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
         storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
       }
