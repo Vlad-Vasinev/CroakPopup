@@ -22,7 +22,6 @@ export function rightMovement(storiesGalleri) {
     let nextBtn = storiesGalleri.parentElement.parentElement.querySelector('.stories-next')
     nextBtn.setAttribute('disabled', true)
     nextBtn.classList.add('btn_disabled')
-    //nextBtn.classList.add('stories-el_active')
   }
 
   if(elActiveIn < (lengthEl - 1)) {
@@ -38,7 +37,6 @@ export function leftMovement(storiesGalleri) {
 
   let lengthEl = document.querySelectorAll('.galleri .galleri__el').length
   let elActiveIn = window.countIndex
-  console.log(elActiveIn)
 
   if(window.countIndex === lengthEl - 1) {
     storiesGalleri.parentElement.parentElement.querySelector('.stories-next').removeAttribute('disabled')
