@@ -22,6 +22,7 @@ class croakSlider {
     this.opacity
     this.DOMElement
     this.mobileVideo = false
+    this.deskStories = false
 
     Object.entries(object).forEach((element) => {
       if(element[0] === "stories") {
@@ -42,6 +43,9 @@ class croakSlider {
         if(element[1].mobileVideo === true) {
           this.mobileVideo = true
         }
+        if(element[1].deskStories === true) {
+          this.deskStories = true
+        }
       }
     })
 
@@ -61,7 +65,7 @@ class croakSlider {
             }, 350)
 
             let storiesGalleri = storiesGallery(this.gap)
-            fillSlider(array, storiesGalleri, this.scale, this.mobileVideo)
+            fillSlider(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
 
             let storiesOut = storiesExitBtn()
             let storiesContainer = storiesContainerEl()
@@ -181,6 +185,7 @@ let frog = new croakSlider({
     gap: 50,
     scale: .75,
     opacity: 0.95,
-    mobileVideo: true
+    //mobileVideo: true,
+    deskStories: true,
   },
 });
