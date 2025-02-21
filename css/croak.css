@@ -100,9 +100,13 @@ html {
   border-radius: calc(8px + 4 * (100vw - 1280px) / 640);
   overflow: hidden;
   object-fit: contain;
-  width: calc(366.6666666667px + 183.3333333333 * (100vw - 1280px) / 640);
-  height: calc(566.6666666667px + 283.3333333333 * (100vw - 1280px) / 640);
-  transform: scale(var(--img-scale));
+  /* width: calc(366.6666666667px + 183.3333333333 * (100vw - 1280px) / 640);
+  height: calc(566.6666666667px + 283.3333333333 * (100vw - 1280px) / 640); */
+
+  width: calc(346.6666666667px + 173.3333333333 * (100vw - 1280px) / 640);
+  height: calc(533.3333333333px + 266.6666666667 * (100vw - 1280px) / 640);
+  transform: scale(var(--img-scale)) translateY(-38%);
+  /* transform: scale(var(--img-scale)) translateY(-31%); */
 }
 
 .galleri__el:hover {
@@ -173,6 +177,11 @@ html {
   position: relative;
   z-index: 1;
   transform: scale(1);
+}
+
+.galleri__el.stories-el_active.galleri__el_stories {
+  /* transform: scale(1) translateY(-25%); */
+  transform: scale(1) translateY(-28%);
 }
 
 .stories-container {
@@ -325,7 +334,7 @@ html {
     max-height: unset;
     height: 100vh;
     border-radius: 12px;
-  }  
+  } 
 
   [data-croak-container] {
     display: flex;
