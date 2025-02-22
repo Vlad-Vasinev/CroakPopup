@@ -20,7 +20,7 @@ npm i croak-popup
 2. Add CSS and JS:
 ```
 <link rel="stylesheet" href="node_modules/croak-popup/css/croak.css">
-<script type="module" src="/node_modules/croak-popup/js/croakBundle.js"></script>
+<script type="module" src="/node_modules/croak-popup/js/croak.min.js"></script>
 ```
 
 3. Add croak container:
@@ -40,17 +40,17 @@ npm i croak-popup
 
 5. Add **`data-el`** attribute to specify **`img`** elements:
 ```
-<img src="slider/yourimage.jpg" data-el>
+<img src="yourpath/yourimage.jpg" data-el>
 ```
 
 6. Add **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
 ```
 <div
   data-video-el
-  data-src-webm="content/yourvideo.webm"
-  data-src-mp4="content/yourvideo.mp4"
-  data-src-mob-mp4="content/yourvideo.mp4"
-  data-src-mob-webm="content/yourvideo.webm"
+  data-src-webm="yourpath/yourvideo.webm"
+  data-src-mp4="yourpath/yourvideo.mp4"
+  data-src-mob-mp4="yourpath/yourvideo.mp4"
+  data-src-mob-webm="yourpath/yourvideo.webm"
   >
 
   <img src="content/yourimage.jpg">
@@ -60,13 +60,13 @@ npm i croak-popup
 7. Add **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
 ```
 <img
-  src="slider/yourimage.jpg"
+  src="yourpath/yourimage.jpg"
 
   data-video-el
-  data-src-webm="slider/yourvideo.webm"
-  data-src-mp4="slider/yourvideo.mp4"
-  data-src-mob-mp4="content/yourvideo.mp4"
-  data-src-mob-webm="content/yourvideo.webm"
+  data-src-webm="yourpath/yourvideo.webm"
+  data-src-mp4="yourpath/yourvideo.mp4"
+  data-src-mob-mp4="yourpath/yourvideo.mp4"
+  data-src-mob-webm="yourpath/yourvideo.webm"
 >
 ```
 
@@ -82,9 +82,9 @@ npm i croak-popup
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
 
-  <img src="content/yourimage1.png" data-el>
-  <img src="content/yourimage2.png" data-el>
-  <img src="content/yourimage3.png" data-el>
+  <img src="yourpath/yourimage1.png" data-el>
+  <img src="yourpath/yourimage2.png" data-el>
+  <img src="yourpath/yourimage3.png" data-el>
 </div>
 ```
 
@@ -95,35 +95,35 @@ npm i croak-popup
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
 
-  <img src="content/yourimage1.png" data-el>
+  <img src="yourpath/yourimage1.png" data-el>
   <div
     data-video-el
-    data-src-webm="content/yourvideo1.webm"
-    data-src-mp4="content/yourvideo1.mp4"
-    data-src-mob-mp4="content/yourvideo1.mp4"
-    data-src-mob-webm="content/yourvideo1.webm"
+    data-src-webm="yourpath/yourvideo1.webm"
+    data-src-mp4="yourpath/yourvideo1.mp4"
+    data-src-mob-mp4="yourpath/yourvideo1.mp4"
+    data-src-mob-webm="yourpath/yourvideo1.webm"
     >
 
-    <img src="content/yourimage1.jpg">
+    <img src="yourpath/yourimage1.jpg">
   </div>
 
-  <img src="content/yourimage2.png" data-el>
+  <img src="yourpath/yourimage2.png" data-el>
   <div
     data-video-el
-    data-src-webm="content/yourvideo2.webm"
-    data-src-mp4="content/yourvideo2.mp4"
-    data-src-mob-mp4="content/yourvideo2.mp4"
-    data-src-mob-webm="content/yourvideo2.webm"
+    data-src-webm="yourpath/yourvideo2.webm"
+    data-src-mp4="yourpath/yourvideo2.mp4"
+    data-src-mob-mp4="yourpath/yourvideo2.mp4"
+    data-src-mob-webm="yourpath/yourvideo2.webm"
     >
 
-    <img src="content/yourimage2.jpg">
+    <img src="yourpath/yourimage2.jpg">
   </div>
 </div>
 ```
 
 11. Create basic popup essence:
 ```
-import { croakSlider } from "../node_modules/croak-popup/js/croakBundle.js"
+import { croakSlider } from "../node_modules/croak-popup/js/croak.min.js"
 
 let frog = new croakSlider({
   stories: {
