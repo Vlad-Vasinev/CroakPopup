@@ -12,15 +12,23 @@
 - swipe control (mobile only) 💡
 
 # Let's get started
+1. Install Croak:
+**`npm i croak-popup`**
 
-1. Add croak container:
+2. Add CSS and JS:
+```
+<link rel="stylesheet" href="node_modules/croak-popup/css/croak.css">
+<script type="module" src="/node_modules/croak-popup/js/croakBundle.js"></script>
+```
+
+3. Add croak container:
 ```
 <div data-croak-container>
 
 </div>
 ```
 
-2. Add control buttons(optional):
+4. Add control buttons(optional):
 ```
 <div data-croak-container>
   <button class="stories-prev"></button>
@@ -28,12 +36,12 @@
 </div>
 ```
 
-3. Add **`data-el`** attribute to specify **`img`** elements:
+5. Add **`data-el`** attribute to specify **`img`** elements:
 ```
 <img src="slider/yourimage.jpg" data-el>
 ```
 
-4. Add **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
+6. Add **`data-video-el`**, **`data-src`** attributes to specify **`video`** elements:
 ```
 <div
   data-video-el
@@ -47,7 +55,7 @@
 </div>
 ```
 
-5. Add **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
+7. Add **`data-video-el`**, **`data-src`** attributes to your **`img`** to specify video elements:
 ```
 <img
   src="slider/yourimage.jpg"
@@ -60,12 +68,12 @@
 >
 ```
 
-6. Add the "marker" to your HTML:
+8. Add the "marker" to your HTML:
 ```
 <hr class="marker">
 ```
 
-7. Your basic HTML for images only:
+9. Your basic HTML for images only:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -78,7 +86,7 @@
 </div>
 ```
 
-8. Your basic HTML for images + video:
+10. Your basic HTML for images + video:
 ```
 <hr class="marker">
 <div data-croak-container>
@@ -111,8 +119,10 @@
 </div>
 ```
 
-9. Create basic popup essence:
+11. Create basic popup essence:
 ```
+import { croakSlider } from "../node_modules/croak-popup/js/croakBundle.js"
+
 let frog = new croakSlider({
   stories: {
     DOMElement: "div[data-croak-container]",
@@ -124,7 +134,7 @@ let frog = new croakSlider({
 });
 ```
 
-10. use 
+12. use 
 - gap
 - scale
 - opacity 
