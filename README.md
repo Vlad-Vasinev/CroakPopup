@@ -53,7 +53,7 @@ npm i croak-popup
   data-src-mob-webm="yourpath/yourvideo.webm"
   >
 
-  <img src="content/yourimage.jpg">
+  <img src="yourpath/yourimage.jpg">
 </div>
 ```
 
