@@ -12,7 +12,7 @@
 - swipe control (mobile only) 💡
 
 # Let's get started
-1. Install Croak:
+1. Install croak:
 ```
 npm i croak-popup
 ```
