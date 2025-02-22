@@ -1,10 +1,5 @@
 # Croak Popup(JavaScript popup)💻
 
-## This project is using:
-- HTML: basic html-layout 💡
-- CSS: popup's styling 💡
-- JS: popup's logic 💡
-
 ## Features:
 - keyboard control (left/right) 💡
 - custom buttons control (left/right) 💡
