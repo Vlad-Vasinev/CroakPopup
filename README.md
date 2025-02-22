@@ -89,9 +89,10 @@
   <div
     data-video-el
     data-src-webm="content/yourvideo1.webm"
-    data-src-mp4="content/yourvideo1.mp4">
+    data-src-mp4="content/yourvideo1.mp4"
     data-src-mob-mp4="content/yourvideo1.mp4"
     data-src-mob-webm="content/yourvideo1.webm"
+    >
 
     <img src="content/yourimage1.jpg">
   </div>
@@ -100,9 +101,10 @@
   <div
     data-video-el
     data-src-webm="content/yourvideo2.webm"
-    data-src-mp4="content/yourvideo2.mp4">
+    data-src-mp4="content/yourvideo2.mp4"
     data-src-mob-mp4="content/yourvideo2.mp4"
     data-src-mob-webm="content/yourvideo2.webm"
+    >
 
     <img src="content/yourimage2.jpg">
   </div>
