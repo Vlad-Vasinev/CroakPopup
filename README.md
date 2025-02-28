@@ -165,4 +165,4 @@ function getDistanceStories(el, galleriEssence) {
 
 - https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL
 - https://codepen.io/Vlad_Vasinev/pen/ByaKboN
-- 
+- https://codepen.io/Vlad_Vasinev/pen/RNwKKGM
