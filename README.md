@@ -163,6 +163,6 @@ function getDistanceStories(el, galleriEssence) {
 
 # Code Examples:
 
-- https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL
-- https://codepen.io/Vlad_Vasinev/pen/ByaKboN
-- https://codepen.io/Vlad_Vasinev/pen/RNwKKGM
+- https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL **`desktop-view`**
+- https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`mobile-view`**
+- https://codepen.io/Vlad_Vasinev/pen/RNwKKGM **`no-buttons`**
