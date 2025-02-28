@@ -17,6 +17,7 @@ import { appHeight } from "./functions/appResize.js"
 class croakSlider {
   constructor(object) {
     this.stories = false
+    this.buttons = false
     this.gap
     this.scale
     this.opacity
@@ -30,6 +31,9 @@ class croakSlider {
         document.querySelector('.marker').classList.add('marker-stories')
         if(element[1].DOMElement) {
           this.DOMElement = element[1].DOMElement
+        }
+        if(element[1].buttons) {
+          this.buttons = element[1].buttons
         }
         if(element[1].gap) {
           this.gap = `${element[1].gap}px`
@@ -52,6 +56,8 @@ class croakSlider {
     console.log(this.mobileVideo)
 
     window.countIndex = undefined
+    window.buttons = this.buttons
+
     if(this.DOMElement) {
 
       document.querySelectorAll(this.DOMElement).forEach((elContainer) => {
@@ -134,22 +140,31 @@ class croakSlider {
 
             storiesExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
 
-            let customPrevArrow = document.querySelector(this.DOMElement).querySelector('.stories-prev').cloneNode()//custom buttons must be not here
-            let customNextArrow = document.querySelector(this.DOMElement).querySelector('.stories-next').cloneNode()//custom buttons must be not here 
-
-            storiesContainer.appendChild(customPrevArrow)
-            storiesContainer.appendChild(customNextArrow)
-            customPrevArrow.classList.add('custom-left')
-            customNextArrow.classList.add('custom-right')
-
-            if(window.countIndex == 0) {
-              storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').setAttribute('disabled', true)
-              storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.add('btn_disabled')
-            }
-            else if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
-              console.log(window.countIndex)
-              storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
-              storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
+            if(window.buttons) {
+              let customPrevArrow = document.querySelector(this.DOMElement).querySelector('.stories-prev').cloneNode()//custom buttons must be not here
+              let customNextArrow = document.querySelector(this.DOMElement).querySelector('.stories-next').cloneNode()//custom buttons must be not here 
+  
+              storiesContainer.appendChild(customPrevArrow)
+              storiesContainer.appendChild(customNextArrow)
+              customPrevArrow.classList.add('custom-left')
+              customNextArrow.classList.add('custom-right')
+  
+              if(window.countIndex == 0) {
+                storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').setAttribute('disabled', true)
+                storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.add('btn_disabled')
+              }
+              else if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
+                console.log(window.countIndex)
+                storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
+                storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
+              }
+  
+              customPrevArrow.addEventListener('click', () => {
+                leftMovement(storiesGalleri)
+              })
+              customNextArrow.addEventListener('click', () => {
+                rightMovement(storiesGalleri)
+              })
             }
 
             document.addEventListener('keydown', keyEvent)
@@ -159,13 +174,6 @@ class croakSlider {
               document.addEventListener('touchstart', mobTouchStart)
               document.addEventListener('touchend', mobTouchEnd)
             }
-
-            customPrevArrow.addEventListener('click', () => {
-              leftMovement(storiesGalleri)
-            })
-            customNextArrow.addEventListener('click', () => {
-              rightMovement(storiesGalleri)
-            })
 
             sliderOpen(storiesGalleri)
               
