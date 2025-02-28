@@ -14,13 +14,15 @@ export function storiesExit (storiesOut, startXSwipe, startYSwipe, storiesContai
     enableScroll()
     storiesGalleri.classList.remove('galleri_transform')
 
-    setTimeout(() => {
+    if(window.buttons) {
+      setTimeout(() => {
 
-      storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').removeAttribute('disabled')
-      storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.remove('btn_disabled')
+        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').removeAttribute('disabled')
+        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.remove('btn_disabled')
 
-      storiesGalleri.parentElement.parentElement.querySelector('.stories-next').removeAttribute('disabled')
-      storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.remove('btn_disabled')
-    }, 300)
+        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').removeAttribute('disabled')
+        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.remove('btn_disabled')
+      }, 300)
+    }
   })
 }

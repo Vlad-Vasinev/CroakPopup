@@ -11,21 +11,23 @@ export function sliderOpen (storiesGalleri) {
       e.currentTarget.classList.add('stories-el_active')
       getDistanceStories(e.currentTarget, storiesGalleri)
 
-      if(window.countIndex == 0) {
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').setAttribute('disabled', true)
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.add('btn_disabled')
-      }
-      else {
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').removeAttribute('disabled')
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.remove('btn_disabled')
-      }
-      if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
-      }
-      else {
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').removeAttribute('disabled')
-        storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.remove('btn_disabled')
+      if(window.buttons) {
+        if(window.countIndex == 0) {
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').setAttribute('disabled', true)
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.add('btn_disabled')
+        }
+        else {
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').removeAttribute('disabled')
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.remove('btn_disabled')
+        }
+        if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
+        }
+        else {
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-next').removeAttribute('disabled')
+          storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.remove('btn_disabled')
+        }
       }
 
     })
