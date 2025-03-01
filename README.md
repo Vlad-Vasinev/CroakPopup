@@ -15,7 +15,9 @@ npm i vanilla-croakpopup
 2. Add CSS and JS:
 ```
 <link rel="stylesheet" href="/node_modules/vanilla-croakpopup/css/croak.min.css">
+
 <script type="module" src="/node_modules/vanilla-croakpopup/js/croak.min.js"></script>
+<script type="module" src="/js/yourscript.js"></script>
 ```
 
 3. Add croak container:
