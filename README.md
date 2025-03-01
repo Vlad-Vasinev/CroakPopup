@@ -1,7 +1,7 @@
 # Croak Popup(JavaScript popup)💻
 
 ## Features:
-- keyboard control (left/right) 💡
+- keyboard control ("ArrowLeft"/"ArrowRight", "A"/"D", "Escape") 💡
 - custom buttons control (left/right) 💡
 - slide click control 💡
 - swipe control (mobile only) 💡
