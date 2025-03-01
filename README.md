@@ -9,7 +9,7 @@
 # Let's get started
 1. Install croak:
 ```
-npm i croak-popup
+npm i vanilla-croakpopup
 ```
 
 2. Add CSS and JS:
