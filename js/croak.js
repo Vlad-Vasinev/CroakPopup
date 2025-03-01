@@ -5,6 +5,7 @@ import { leftMovement } from "./functions/functions.js"
 
 import { storiesExit } from "./functions/storiesOut.js"
 import { storiesExitBtn } from "./functions/storiesExit.js"
+import { closeStories } from "./functions/closeStories.js"
 import { sliderOpen } from "./functions/sliderOpen.js"
 import { disableScroll } from "./functions/scrollFunc.js"
 
@@ -18,6 +19,7 @@ class croakSlider {
   constructor(object) {
     this.stories = false
     this.buttons = false
+    this.keyboard = false
     this.gap
     this.scale
     this.opacity
@@ -34,6 +36,9 @@ class croakSlider {
         }
         if(element[1].buttons) {
           this.buttons = element[1].buttons
+        }
+        if(element[1].keyboard) {
+          this.keyboard = element[1].keyboard
         }
         if(element[1].gap) {
           this.gap = `${element[1].gap}px`
@@ -57,6 +62,7 @@ class croakSlider {
 
     window.countIndex = undefined
     window.buttons = this.buttons
+    window.keyboard = this.keyboard
 
     if(this.DOMElement) {
 
@@ -132,9 +138,20 @@ class croakSlider {
                 rightMovement(storiesGalleri)
               }
               if(event.key === 'ArrowLeft') {
-                console.log('move left')
                 if(window.countIndex !== 0)
                 leftMovement(storiesGalleri)
+              }
+              if(event.key === 'd') {
+                if(window.countIndex !== (array.length - 1))
+                rightMovement(storiesGalleri)
+              }
+              if(event.key === 'a') {
+                if(window.countIndex !== 0)
+                leftMovement(storiesGalleri)
+              }
+              if(event.key === 'Escape') {
+                console.log("escape")
+                closeStories(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
               }
             }
 
@@ -167,13 +184,16 @@ class croakSlider {
               })
             }
 
-            document.addEventListener('keydown', keyEvent)
+            if(window.keyboard) {
+              document.addEventListener('keydown', keyEvent)
             
-            if(window.innerWidth <= 768) {
-              document.removeEventListener('keydown', keyEvent)
-              document.addEventListener('touchstart', mobTouchStart)
-              document.addEventListener('touchend', mobTouchEnd)
+              if(window.innerWidth <= 768) {
+                document.removeEventListener('keydown', keyEvent)
+              }
             }
+
+            document.addEventListener('touchstart', mobTouchStart)
+            document.addEventListener('touchend', mobTouchEnd)
 
             sliderOpen(storiesGalleri)
               
@@ -195,5 +215,7 @@ let frog = new croakSlider({
     opacity: 0.95,
     //mobileVideo: true,
     deskStories: true,
+    //keyboard: true,
+    //buttons: true,
   },
 });
