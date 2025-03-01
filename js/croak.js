@@ -215,7 +215,7 @@ let frog = new croakSlider({
     opacity: 0.95,
     //mobileVideo: true,
     deskStories: true,
-    //keyboard: true,
-    //buttons: true,
+    keyboard: true,
+    buttons: true,
   },
 });
