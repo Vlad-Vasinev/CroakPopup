@@ -120,7 +120,7 @@ npm i vanilla-croakpopup
 
 11. Create basic popup essence:
 ```
-import { croakSlider } from "../node_modules/croak-popup/js/croak.min.js"
+import { croakSlider } from "../node_modules/vanilla-croakpopup/js/croak.min.js"
 
 let frog = new croakSlider({
   stories: {
