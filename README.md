@@ -126,7 +126,9 @@ let frog = new croakSlider({
     gap: 50,
     scale: .75,
     opacity: 0.95,
-    mobileVideo: true
+    mobileVideo: true,
+    keyboard: true,
+    buttons: true,
   },
 });
 ```
