@@ -167,5 +167,5 @@ function getDistanceStories(el, galleriEssence) {
 # Code Examples:
 
 - https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL **`horizontal-view`**, **`no-buttons`**, **`no-keyboard`**
-- https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`vertical-view`**
+- https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`vertical-view`**, **`keyboard`**
 - https://codepen.io/Vlad_Vasinev/pen/RNwKKGM **`no-buttons`**
