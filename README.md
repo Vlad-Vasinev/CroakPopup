@@ -121,10 +121,10 @@ let frog = new croakSlider({
     gap: 50,
     scale: .75,
     opacity: 0.95,
-    deskStories: true,
-    //mobileVideo: true,
-    keyboard: true,
-    buttons: true,
+    deskStories: true, //optional
+    //mobileVideo: true, //optional
+    keyboard: true, //optional
+    buttons: true, //optional
   },
 });
 ```
