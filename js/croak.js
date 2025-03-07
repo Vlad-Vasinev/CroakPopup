@@ -30,7 +30,6 @@ class croakSlider {
     Object.entries(object).forEach((element) => {
       if(element[0] === "stories") {
         this.stories = true
-        document.querySelector('.marker').classList.add('marker-stories')
         if(element[1].DOMElement) {
           this.DOMElement = element[1].DOMElement
         }
@@ -215,7 +214,7 @@ let frog = new croakSlider({
     opacity: 0.95,
     //mobileVideo: true,
     deskStories: true,
-    keyboard: true,
-    buttons: true,
+    // keyboard: true,
+    // buttons: true,
   },
 });
