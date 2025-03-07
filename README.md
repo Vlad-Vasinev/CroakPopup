@@ -67,14 +67,8 @@ npm i vanilla-croakpopup
 >
 ```
 
-8. Add the "marker" to your HTML:
+8. Your basic HTML for images only:
 ```
-<hr class="marker">
-```
-
-9. Your basic HTML for images only:
-```
-<hr class="marker">
 <div data-croak-container>
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
@@ -85,9 +79,8 @@ npm i vanilla-croakpopup
 </div>
 ```
 
-10. Your basic HTML for images + video:
+9. Your basic HTML for images + video:
 ```
-<hr class="marker">
 <div data-croak-container>
   <button class="stories-prev"></button>
   <button class="stories-next"></button>
@@ -118,7 +111,7 @@ npm i vanilla-croakpopup
 </div>
 ```
 
-11. Create basic popup essence:
+10. Create basic popup essence:
 ```
 import { croakSlider } from "../node_modules/vanilla-croakpopup/js/croak.min.js"
 
@@ -136,7 +129,7 @@ let frog = new croakSlider({
 });
 ```
 
-12. use 
+11. use 
 - gap
 - scale
 - opacity 
@@ -148,15 +141,14 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 
 - the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as **`el`**
 and galleri wrapper, aka as **`storiesGallery`**
-- simply put, the function counts the distance between the marker and the element's distance from the right screen corner
+- simply put, the function counts the distance between (window.screen.width / 2) and the element's distance from the right screen corner
 
 - whole function's code: 
 ```
 function getDistanceStories(el, galleriEssence) {
   let elRight = el.getBoundingClientRect().right
-  let markerRight = document.querySelector('.marker').getBoundingClientRect().left
-  let distanceCheck = markerRight - elRight
 
+  let distanceCheck = (window.screen.width / 2) - elRight
   galleriEssence.style.transform = `translateX(${distanceCheck + galleriEssence.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)}px) translateY(-50%)`
 }
 ```
