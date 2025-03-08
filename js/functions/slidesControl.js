@@ -12,6 +12,6 @@ export function getDistanceStories(el, galleriEssence) {
     videoEl.setAttribute('autoplay', true)
     videoEl.play()
   }
-  let distanceCheck = (window.screen.width / 2) - elRight
+  let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
   galleriEssence.style.transform = `translateX(${distanceCheck + galleriEssence.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)}px) translateY(-50%)`
 }
