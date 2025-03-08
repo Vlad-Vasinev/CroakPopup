@@ -141,14 +141,14 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 
 - the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as **`el`**
 and galleri wrapper, aka as **`storiesGallery`**
-- simply put, the function counts the distance between (window.screen.width / 2) and the element's distance from the right screen corner
+- simply put, the function counts the distance between the center of the screen and the element's distance from the right screen corner
 
 - whole function's code: 
 ```
 function getDistanceStories(el, galleriEssence) {
   let elRight = el.getBoundingClientRect().right
 
-  let distanceCheck = (window.screen.width / 2) - elRight
+  let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
   galleriEssence.style.transform = `translateX(${distanceCheck + galleriEssence.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)}px) translateY(-50%)`
 }
 ```
