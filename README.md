@@ -163,3 +163,7 @@ function getDistanceStories(el, galleriEssence) {
 - https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL **`horizontal-view`**, **`no-buttons`**, **`no-keyboard`**
 - https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`vertical-view`**, **`keyboard`**
 - https://codepen.io/Vlad_Vasinev/pen/RNwKKGM **`vertical-view`**, **`keyboard`**, **`buttons`**
+
+# Tutorial:
+
+- https://youtu.be/BCNzKoOepxY?si=U0RJ62vWuF2lzJKu
