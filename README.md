@@ -122,7 +122,7 @@ let frog = new croakSlider({
     scale: .75,
     opacity: 0.95,
     deskStories: true, //optional
-    deskSwipe: true, // optional
+    deskSwipe: true, // optional🔬
     //mobileVideo: true, //optional
     keyboard: true, //optional
     buttons: true, //optional
