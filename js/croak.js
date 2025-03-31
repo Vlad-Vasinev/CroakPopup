@@ -26,6 +26,7 @@ class croakSlider {
     this.DOMElement
     this.mobileVideo = false
     this.deskStories = false
+    //this.deskSwipe = false
 
     Object.entries(object).forEach((element) => {
       if(element[0] === "stories") {
@@ -54,10 +55,13 @@ class croakSlider {
         if(element[1].deskStories === true) {
           this.deskStories = true
         }
+        if(element[1].deskSwipe === true) {
+          window.deskSwipe = true
+        }
       }
     })
 
-    console.log(this.mobileVideo)
+    //console.log(this.mobileVideo)
 
     window.countIndex = undefined
     window.buttons = this.buttons
@@ -68,7 +72,7 @@ class croakSlider {
       document.querySelectorAll(this.DOMElement).forEach((elContainer) => {
         elContainer.querySelectorAll('[data-el], [data-video-el]').forEach((elSlider, index, array) => {
           elSlider.addEventListener('click', () => {
-            console.log(elSlider + `${index}`)
+            //console.log(elSlider + `${index}`)
 
             window.countIndex = index
             setTimeout(() => {
@@ -94,7 +98,7 @@ class croakSlider {
                 element.classList.remove('stories-el_active')
               })
               document.querySelectorAll('.galleri .galleri__el')[window.countIndex].classList.add('stories-el_active')
-              getDistanceStories(document.querySelectorAll('.galleri .galleri__el')[window.countIndex], storiesGalleri)
+              getDistanceStories(document.querySelectorAll('.galleri .galleri__el')[window.countIndex], storiesGalleri, this.deskSwipe)
               setTimeout(() => {
                 storiesGalleri.classList.add('galleri_transform')
               }, 200)
@@ -214,7 +218,8 @@ let frog = new croakSlider({
     opacity: 0.95,
     //mobileVideo: true,
     deskStories: true,
-    // keyboard: true,
-    // buttons: true,
+    deskSwipe: true
+    //keyboard: true,
+    //buttons: true,
   },
 });
