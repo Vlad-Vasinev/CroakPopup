@@ -4,7 +4,7 @@
 - keyboard control ("ArrowLeft"/"ArrowRight", "A"/"D", "Escape") 💡
 - custom buttons control (left/right) 💡
 - slide click control 💡
-- swipe control (mobile only) 💡
+- swipe control (mobile, desktop(experimental)) 💡🔬
 
 # Let's get started
 1. Install croak:
