@@ -122,7 +122,8 @@ let frog = new croakSlider({
     scale: .75,
     opacity: 0.95,
     deskStories: true, //optional
-    deskSwipe: true, // optional🔬, works without buttons and keyboard
+    deskSwipe: true, // optional🔬, works without buttons
+    deskSwipeFocus: true, // optioal, works with deskSwipe and keyboard
     //mobileVideo: true, //optional
     keyboard: true, //optional
     buttons: true, //optional
@@ -163,6 +164,7 @@ function getDistanceStories(el, galleriEssence) {
 
 - https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL **`horizontal-view`**, **`no-buttons`**, **`no-keyboard`**
 - https://codepen.io/Vlad_Vasinev/pen/dPyQZdL **`desktop-swipe`**, **`no-buttons`**, **`no-keyboard`**
+- https://codepen.io/Vlad_Vasinev/pen/zxYbzmz **`desktop-swipe-focus`**, **`keyboard`**, **`no-buttons`**
 - https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`vertical-view`**, **`keyboard`**
 - https://codepen.io/Vlad_Vasinev/pen/RNwKKGM **`vertical-view`**, **`keyboard`**, **`buttons`**
 
