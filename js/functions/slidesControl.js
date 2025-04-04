@@ -17,6 +17,11 @@ export function getDistanceStories(el, galleriEssence, deskSwipe) {
     videoEl.play()
   }
 
+  function checkCenter (el) {
+    let elCenter = el.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)
+    return elCenter <= ((window.innerWidth / 2) + (el.getBoundingClientRect().width / window.elementScale / 2)) && elCenter >= ((window.innerWidth / 2) - (el.getBoundingClientRect().width / window.elementScale / 3))
+  }
+
   let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
 
   const galleriEssenceRect = galleriEssence.getBoundingClientRect();
@@ -33,6 +38,7 @@ export function getDistanceStories(el, galleriEssence, deskSwipe) {
 
   let prevDiff = -translateX
   let diff = 0
+  let counter = 0
 
   let rightBoundary = (galleriWrapperClW - galleriScrW)
 
@@ -50,17 +56,20 @@ export function getDistanceStories(el, galleriEssence, deskSwipe) {
       return
     }
 
-    galleriEssence.querySelectorAll('.galleri__el').forEach((el) => {
-      el.classList.remove('stories-el_active')
-      el.style.pointerEvents = "none"
-    })
+    if(counter === 0) {
+      galleriEssence.querySelectorAll('.galleri__el').forEach((el, index, array) => {
+        el.classList.remove('stories-el_active')
+        el.style.pointerEvents = "none"
+        el.parentElement.querySelectorAll('video').forEach((el) => {
+          el.removeAttribute('autoplay')
+          el.pause()
+        })
+      })
+      counter++
+    }
 
-    //console.log(startX - e.clientX)
     diff = (startX - e.clientX - prevDiff)
     let currDiff = -diff
-
-    //console.log(-(galleriScrW - galleriWrapperClW))
-    // console.log(-diff)
 
     if(diff < -(galleriScrW - galleriWrapperClW)) {
       diff += currDiff - (galleriScrW - galleriWrapperClW + 20)
@@ -70,6 +79,19 @@ export function getDistanceStories(el, galleriEssence, deskSwipe) {
     }
 
     galleriEssence.style.transform = `translate3d(${-diff}px, ${-(galleriEssence.getBoundingClientRect().height / 2)}px, 0)`
+  
+    if(window.deskSwipeFocus) {
+      galleriEssence.querySelectorAll('.galleri__el').forEach((item, index, array) => {
+        if(checkCenter(item)) {
+          item.classList.add('stories-el_active')
+          window.countIndex = index
+        }
+        else {
+          item.classList.remove('stories-el_active')
+        }
+      })
+    }
+
   }
   function endSwipe (e) {
     isActive = false
@@ -80,17 +102,13 @@ export function getDistanceStories(el, galleriEssence, deskSwipe) {
     galleriEssence.querySelectorAll('.galleri__el').forEach((el) => {
       el.style.pointerEvents = "initial"
     })
+    counter = 0
 
   }
-  //console.log(window.deskSwipe)
   if(window.innerWidth >= 768 && window.deskSwipe) {
     galleriWrapper.addEventListener('mousedown', startSwipe)
     galleriWrapper.addEventListener('mousemove', moveSwipe)
     galleriWrapper.addEventListener('mouseup', endSwipe)
     galleriWrapper.addEventListener('mouseleave', endSwipe)
   }
-  // if(deskSwipe) {
-
-  // }
-
 }
