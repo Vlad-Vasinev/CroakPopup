@@ -26,7 +26,8 @@ class croakSlider {
     this.DOMElement
     this.mobileVideo = false
     this.deskStories = false
-    //this.deskSwipe = false
+    this.deskSwipeFocus = false
+    this.deskSwipe = false
 
     Object.entries(object).forEach((element) => {
       if(element[0] === "stories") {
@@ -45,6 +46,7 @@ class croakSlider {
         }
         if(element[1].scale) {
           this.scale = element[1].scale
+          window.elementScale = this.scale
         }
         if(element[1].opacity) {
           this.opacity = element[1].opacity
@@ -57,6 +59,9 @@ class croakSlider {
         }
         if(element[1].deskSwipe === true) {
           window.deskSwipe = true
+        }
+        if(element[1].deskSwipeFocus === true) {
+          window.deskSwipeFocus = true
         }
       }
     })
@@ -218,8 +223,9 @@ let frog = new croakSlider({
     opacity: 0.95,
     //mobileVideo: true,
     deskStories: true,
-    deskSwipe: true
-    //keyboard: true,
+    deskSwipe: true,
+    keyboard: true,
+    deskSwipeFocus: true,
     //buttons: true,
   },
 });
