@@ -199,7 +199,7 @@ let frog = new croakSlider({
   //mobileVideo: true,
   deskStories: true,
   deskSwipe: true,
-  //deskSwipeFocus: true,
+  deskSwipeFocus: true,
   keyboard: true,
   //buttons: true,
 });
