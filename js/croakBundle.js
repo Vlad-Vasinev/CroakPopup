@@ -1,16 +1,605 @@
-export function getDistanceStories(e,t,r){let o=e.getBoundingClientRect().right;e.parentElement.querySelectorAll("video").forEach((e=>{e.removeAttribute("autoplay"),e.pause()})),void 0===r&&(r=!1);let n=e.querySelector("video");n&&e.classList.contains("stories-el_active")&&(n.setAttribute("autoplay",!0),n.play());let i=t.getBoundingClientRect().width/2-o;const l=t.getBoundingClientRect(),s=e.getBoundingClientRect(),d=-(i+l.left+s.width/2);t.style.transform=`translate3d(${-d}px, -50%, 0)`;let a=t.scrollWidth,c=t.parentElement,u=c.clientWidth,m=0,p=!1,w=-d,b=0,y=0,g=u-a;function v(e){p=!1,t.style.cursor="grab",w=-b,t.querySelectorAll(".galleri__el").forEach((e=>{e.style.pointerEvents="initial"})),y=0}window.innerWidth>=768&&window.deskSwipe&&(c.addEventListener("mousedown",(function(e){e.preventDefault(),t.style.cursor="grabbing",p=!0,m=e.clientX})),c.addEventListener("mousemove",(function(e){if(e.preventDefault(),!p)return;0===y&&(t.querySelectorAll(".galleri__el").forEach(((e,t,r)=>{e.classList.remove("stories-el_active"),e.style.pointerEvents="none",e.parentElement.querySelectorAll("video").forEach((e=>{e.removeAttribute("autoplay"),e.pause()}))})),y++),b=m-e.clientX-w;let r=-b;b<-(a-u)&&(b+=r-(a-u+20)),r<g&&(b+=r-(g-20)),t.style.transform=`translate3d(${-b}px, ${-t.getBoundingClientRect().height/2}px, 0)`,console.log(window.deskSwipeFocus),window.deskSwipeFocus&&(console.log("ckecher"),t.querySelectorAll(".galleri__el").forEach(((e,t,r)=>{!function(e){console.log("checker");let t=e.getBoundingClientRect().left+e.getBoundingClientRect().width/2;return t<=window.innerWidth/2+e.getBoundingClientRect().width/window.elementScale/2&&t>=window.innerWidth/2-e.getBoundingClientRect().width/window.elementScale/3}(e)?e.classList.remove("stories-el_active"):(e.classList.add("stories-el_active"),window.countIndex=t)})))})),c.addEventListener("mouseup",v),c.addEventListener("mouseleave",v))}export function rightMovement(e){let t=document.querySelectorAll(".galleri .galleri__el").length,r=window.countIndex,o=document.querySelectorAll(".galleri .galleri__el")[r];if(console.log(r),document.querySelectorAll(".galleri .galleri__el").forEach((e=>{e.classList.remove("stories-el_active")})),window.buttons){if(window.countIndex<=1){let t=e.parentElement.parentElement.querySelector(".stories-prev");t.removeAttribute("disabled"),t.classList.remove("btn_disabled"),t.classList.add("stories-el_active")}if(window.countIndex===t-2){let t=e.parentElement.parentElement.querySelector(".stories-next");t.setAttribute("disabled",!0),t.classList.add("btn_disabled")}}r<t-1&&(r+=1,window.countIndex+=1,o=document.querySelectorAll(".galleri .galleri__el")[r],o.classList.add("stories-el_active"),getDistanceStories(o,e))}export function leftMovement(e){let t=document.querySelectorAll(".galleri .galleri__el").length,r=window.countIndex;console.log(r),window.buttons&&(window.countIndex===t-1&&(e.parentElement.parentElement.querySelector(".stories-next").removeAttribute("disabled"),e.parentElement.parentElement.querySelector(".stories-next").classList.remove("btn_disabled")),1===window.countIndex&&(e.parentElement.parentElement.querySelector(".stories-prev").setAttribute("disabled",!0),e.parentElement.parentElement.querySelector(".stories-prev").classList.add("btn_disabled")));let o=document.querySelectorAll(".galleri .galleri__el")[window.countIndex];document.querySelectorAll(".galleri .galleri__el").forEach((e=>{e.classList.remove("stories-el_active")})),0!=window.countIndex&&(window.countIndex-=1,o=document.querySelectorAll(".galleri .galleri__el")[window.countIndex],o.classList.add("stories-el_active"),getDistanceStories(o,e))}function remClassContainer(e){return new Promise((t=>{e.classList.remove("stories-container_active"),t()}))}function remFromBody(e){document.body.removeChild(e)}export async function delStoriesContainer(e){await remClassContainer(e),setTimeout((()=>{remFromBody(e)}),300)}export function storiesExit(e,t,r,o,n,i,l,s){e.addEventListener("click",(()=>{closeStories(t,r,o,n,i,l,s)}))}export function storiesExitBtn(){let e=document.createElement("button");e.classList.add("close-gallery");const t=(new DOMParser).parseFromString('<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.63599 18.364L18.3639 5.63603M5.63599 5.63604L18.3639 18.364" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>',"image/svg+xml").querySelector("svg");return e.append(t),e}export function closeStories(e,t,r,o,n,i,l){document.removeEventListener("keydown",n),document.removeEventListener("touchstart",i),document.removeEventListener("touchend",l),window.countIndex=void 0,delStoriesContainer(r),enableScroll(),o.classList.remove("galleri_transform"),window.buttons&&setTimeout((()=>{o.parentElement.parentElement.querySelector(".stories-prev").removeAttribute("disabled"),o.parentElement.parentElement.querySelector(".stories-prev").classList.remove("btn_disabled"),o.parentElement.parentElement.querySelector(".stories-next").removeAttribute("disabled"),o.parentElement.parentElement.querySelector(".stories-next").classList.remove("btn_disabled")}),300)}export function sliderOpen(e){document.querySelectorAll(".galleri .galleri__el").forEach(((t,r)=>{t.addEventListener("click",(t=>{document.querySelectorAll(".galleri .galleri__el").forEach((e=>{e.classList.remove("stories-el_active")})),window.countIndex=r,t.currentTarget.classList.add("stories-el_active"),getDistanceStories(t.currentTarget,e),window.buttons&&(0==window.countIndex?(e.parentElement.parentElement.querySelector(".stories-prev").setAttribute("disabled",!0),e.parentElement.parentElement.querySelector(".stories-prev").classList.add("btn_disabled")):(e.parentElement.parentElement.querySelector(".stories-prev").removeAttribute("disabled"),e.parentElement.parentElement.querySelector(".stories-prev").classList.remove("btn_disabled")),window.countIndex==e.querySelectorAll(".galleri__el").length-1?(e.parentElement.parentElement.querySelector(".stories-next").setAttribute("disabled",!0),e.parentElement.parentElement.querySelector(".stories-next").classList.add("btn_disabled")):(e.parentElement.parentElement.querySelector(".stories-next").removeAttribute("disabled"),e.parentElement.parentElement.querySelector(".stories-next").classList.remove("btn_disabled")))}))}))}let scrollPosition=0,bodyEl=document.querySelector("body");export function disableScroll(){scrollPosition=window.pageYOffset,bodyEl.style.overflow="hidden",bodyEl.style.position="fixed",bodyEl.style.top=`-${scrollPosition}px`,bodyEl.style.width="100%"}export function enableScroll(){bodyEl.style.removeProperty("overflow"),bodyEl.style.removeProperty("position"),bodyEl.style.removeProperty("top"),bodyEl.style.removeProperty("width"),window.scrollTo(0,scrollPosition)}export function storiesGallery(e){let t=document.createElement("div");return t.classList.add("galleri"),t.style.setProperty("--galleri-gap",e),t.classList.add("galleri-opened"),t}export function storiesContainerEl(){let e=document.createElement("div");return document.body.append(e),e.classList.add("stories-container"),setTimeout((()=>{e.classList.add("stories-container_active")}),100),e}export function fillSlider(e,t,r,o,n){e.forEach((e=>{let i=document.createElement("div");if(n&&window.innerWidth>=768?(i.classList.add("galleri__el"),i.classList.add("galleri__el_stories"),i.style.setProperty("--img-scale",r)):(i.classList.add("galleri__el"),i.style.setProperty("--img-scale",r)),e.hasAttribute("data-video-el")){let r=document.createElement("video"),l=document.createElement("source"),s=document.createElement("source");o&&(window.innerWidth<=768?(l.setAttribute("src",e.getAttribute("data-src-mob-mp4")),s.setAttribute("src",e.getAttribute("data-src-mob-webm")),r.muted="muted",r.style.width="100%",r.controls=!0):(l.setAttribute("src",e.getAttribute("data-src-mp4")),l.setAttribute("type","video/mp4"),s.setAttribute("src",e.getAttribute("data-src-webm")),s.setAttribute("type","video/webm"))),n&&(l.setAttribute("src",e.getAttribute("data-src-mob-mp4")),l.setAttribute("type","video/mp4"),s.setAttribute("src",e.getAttribute("data-src-mob-webm")),s.setAttribute("type","video/webm")),n||o||(l.setAttribute("src",e.getAttribute("data-src-mp4")),l.setAttribute("type","video/mp4"),s.setAttribute("src",e.getAttribute("data-src-webm")),s.setAttribute("type","video/webm")),r.setAttribute("loop",!0),r.setAttribute("playsinline",!0),r.appendChild(l),r.appendChild(s),r.setAttribute("preload",!0),i.append(r),t.append(i)}else{let r=document.createElement("img");r.setAttribute("src",e.getAttribute("src")),i.append(r),t.append(i)}}))}export const appHeight=()=>{document.documentElement.style.setProperty("--app-height",`${window.innerHeight}px`)};export class croakSlider{constructor(e){this.stories=!1,this.buttons=!1,this.keyboard=!1,this.gap,this.scale,this.opacity,this.DOMElement,this.mobileVideo=!1,this.deskStories=!1,this.deskSwipe=!1,this.deskSwipeFocus=!1,Object.entries(e).forEach((e=>{"stories"===e[0]&&(this.stories=!0,e[1].DOMElement&&(this.DOMElement=e[1].DOMElement),e[1].buttons&&(this.buttons=e[1].buttons),e[1].keyboard&&(this.keyboard=e[1].keyboard),e[1].gap&&(this.gap=`${e[1].gap}px`),e[1].scale&&(this.scale=e[1].scale,window.elementScale=this.scale),e[1].opacity&&(this.opacity=e[1].opacity),!0===e[1].mobileVideo&&(this.mobileVideo=!0),!0===e[1].deskStories&&(this.deskStories=!0),!0===e[1].deskSwipe&&(window.deskSwipe=!0),!0===e[1].deskSwipeFocus&&(window.deskSwipeFocus=!0))})),console.log(this.mobileVideo),window.countIndex=void 0,window.buttons=this.buttons,window.keyboard=this.keyboard,this.DOMElement&&document.querySelectorAll(this.DOMElement).forEach((e=>{e.querySelectorAll("[data-el], [data-video-el]").forEach(((e,t,r)=>{e.addEventListener("click",(()=>{console.log(e+`${t}`),window.countIndex=t,setTimeout((()=>{disableScroll()}),350);let o=storiesGallery(this.gap);fillSlider(r,o,this.scale,this.mobileVideo,this.deskStories);let n=storiesExitBtn(),i=storiesContainerEl(),l=document.createElement("div");l.classList.add("stories-wrapper"),i.appendChild(l),l.appendChild(o),i.appendChild(n),i.style.setProperty("--galleri-opacity",this.opacity),o&&(document.querySelectorAll(".galleri .galleri__el").forEach((e=>{e.classList.remove("stories-el_active")})),document.querySelectorAll(".galleri .galleri__el")[window.countIndex].classList.add("stories-el_active"),getDistanceStories(document.querySelectorAll(".galleri .galleri__el")[window.countIndex],o),setTimeout((()=>{o.classList.add("galleri_transform")}),200));let s=50,d=0,a=0;function c(e){d=e.touches[0].clientX,a=e.touches[0].clientY}function u(e){let t=e.changedTouches[0].clientX,r=e.changedTouches[0].clientY,n=d-t,i=a-r;if(Math.abs(n-i)>0&&Math.abs(n)>s)if(n>0){if(window.countIndex===o.querySelectorAll(".galleri__el").length-1)return;rightMovement(o)}else if(n<0){if(0===window.countIndex)return;leftMovement(o)}}function m(e){"ArrowRight"===e.key&&window.countIndex!==r.length-1&&rightMovement(o),"ArrowLeft"===e.key&&0!==window.countIndex&&leftMovement(o),"d"===e.key&&window.countIndex!==r.length-1&&rightMovement(o),"a"===e.key&&0!==window.countIndex&&leftMovement(o),"Escape"===e.key&&(console.log("escape"),closeStories(d,a,i,o,m,c,u))}if(storiesExit(n,d,a,i,o,m,c,u),window.buttons){let e=document.querySelector(this.DOMElement).querySelector(".stories-prev").cloneNode(),t=document.querySelector(this.DOMElement).querySelector(".stories-next").cloneNode();i.appendChild(e),i.appendChild(t),e.classList.add("custom-left"),t.classList.add("custom-right"),0==window.countIndex?(o.parentElement.parentElement.querySelector(".stories-prev").setAttribute("disabled",!0),o.parentElement.parentElement.querySelector(".stories-prev").classList.add("btn_disabled")):window.countIndex==o.querySelectorAll(".galleri__el").length-1&&(console.log(window.countIndex),o.parentElement.parentElement.querySelector(".stories-next").setAttribute("disabled",!0),o.parentElement.parentElement.querySelector(".stories-next").classList.add("btn_disabled")),e.addEventListener("click",(()=>{leftMovement(o)})),t.addEventListener("click",(()=>{rightMovement(o)}))}window.keyboard&&(document.addEventListener("keydown",m),window.innerWidth<=768&&document.removeEventListener("keydown",m)),document.addEventListener("touchstart",c),document.addEventListener("touchend",u),sliderOpen(o)}))}))}))}}appHeight(),window.addEventListener("resize",appHeight);
 
-let frog = new croakSlider({
-  stories: {
-    DOMElement: "div[data-croak-container]",
-    gap: 50,
-    scale: .75,
-    opacity: 0.95,
-    //mobileVideo: true,
-    deskStories: true,
-    deskSwipe: true,
-    keyboard: true,
-    deskSwipeFocus: true,
-    //buttons: true,
-  },
-});
+function createContainer () {
+
+  let storiesContainerElement = document.createElement("div")
+  document.body.append(storiesContainerElement)
+  storiesContainerElement.classList.add('stories-container')
+  setTimeout(() => {
+    storiesContainerElement.classList.add('stories-container_active')
+  }, 100)
+
+  return storiesContainerElement
+
+}
+
+function createGallery (gap) {
+  let stories = document.createElement('div')
+  stories.classList.add('galleri')
+  stories.style.setProperty('--galleri-gap', gap)
+  stories.classList.add('galleri-opened')
+
+  return stories
+
+}
+
+function createElements (array, storiesGalleri, scale, mobVideo, deskStories) {
+  
+  array.forEach((item) => {
+
+    let storiesEl = document.createElement('div')
+    if(deskStories && window.innerWidth >= 768) {
+      storiesEl.classList.add('galleri__el')
+      storiesEl.classList.add('galleri__el_stories')
+      storiesEl.style.setProperty('--img-scale', scale)
+    }
+    else {
+      storiesEl.classList.add('galleri__el')
+      storiesEl.style.setProperty('--img-scale', scale)
+    }
+
+    if(item.hasAttribute('data-video-el')) {
+      let storiesElVideo = document.createElement('video')
+
+      let sourceElement1 = document.createElement('source')
+      let sourceElement2 = document.createElement('source')
+
+      if(mobVideo) {
+
+        if(window.innerWidth <= 768) {
+          sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
+          sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+  
+          storiesElVideo.muted = "muted"
+          storiesElVideo.style.width = "100%"
+          storiesElVideo.controls = true
+        }
+        else {
+          sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
+          sourceElement1.setAttribute('type', 'video/mp4')
+    
+          sourceElement2.setAttribute('src', item.getAttribute('data-src-webm'))
+          sourceElement2.setAttribute('type', 'video/webm')
+        }
+
+      }
+
+      if(deskStories) { 
+        sourceElement1.setAttribute('src', item.getAttribute('data-src-mob-mp4'))
+        sourceElement1.setAttribute('type', 'video/mp4')
+        sourceElement2.setAttribute('src', item.getAttribute('data-src-mob-webm'))
+        sourceElement2.setAttribute('type', 'video/webm')
+      }
+
+      if(!deskStories && !mobVideo) {
+        sourceElement1.setAttribute('src', item.getAttribute('data-src-mp4'))
+        sourceElement1.setAttribute('type', 'video/mp4')
+  
+        sourceElement2.setAttribute('src', item.getAttribute('data-src-webm'))
+        sourceElement2.setAttribute('type', 'video/webm')
+      }
+
+      storiesElVideo.setAttribute('loop', true)
+      storiesElVideo.setAttribute('playsinline', true)
+
+      storiesElVideo.appendChild(sourceElement1)
+      storiesElVideo.appendChild(sourceElement2)
+      storiesElVideo.setAttribute('preload', true)
+      storiesEl.append(storiesElVideo)
+      storiesGalleri.append(storiesEl)
+    }
+    else {
+      let storiesElImg = document.createElement('img')
+      storiesElImg.setAttribute('src', item.getAttribute('src'))
+      storiesEl.append(storiesElImg)
+      storiesGalleri.append(storiesEl)
+
+    }
+  })
+}
+
+function createExitBtn () {
+  let storiesOutBtn = document.createElement('button')
+  storiesOutBtn.classList.add('close-gallery')
+  const svgString = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.63599 18.364L18.3639 5.63603M5.63599 5.63604L18.3639 18.364" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  const parser = new DOMParser()
+  const svgElement = parser.parseFromString(svgString, 'image/svg+xml').querySelector('svg')
+  storiesOutBtn.append(svgElement)
+
+  return storiesOutBtn
+
+}
+
+function createNextButton (storiesContainer, storiesGalleri, domEl) {
+  if(window.croakAPP.buttonsParam) {
+    
+    let customNextArrow = document.querySelector(domEl).querySelector('.stories-next').cloneNode()
+
+    storiesContainer.appendChild(customNextArrow)
+    customNextArrow.classList.add('custom-right')
+
+    if(window.croakAPP.activeSlide == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
+      customNextArrow.setAttribute('disabled', true)
+      customNextArrow.classList.add('btn_disabled')
+    }
+
+    return customNextArrow
+  }
+}
+
+function createPrevButton (storiesContainer, storiesGalleri, domEl) {
+  if(window.croakAPP.buttonsParam) {
+
+    let customPrevArrow = document.querySelector(domEl).querySelector('.stories-prev').cloneNode()
+
+    storiesContainer.appendChild(customPrevArrow)
+    customPrevArrow.classList.add('custom-left')
+
+    if(window.croakAPP.activeSlide == 0) {
+      customPrevArrow.setAttribute('disabled', true)
+      customPrevArrow.classList.add('btn_disabled')
+    }
+
+    return customPrevArrow
+  }
+}
+
+function clickGalleri (storiesGalleri) {
+  document.querySelectorAll('.galleri .galleri__el').forEach((element, indexEl) => {
+    element.addEventListener('click', (e) => {
+      document.querySelectorAll('.galleri .galleri__el').forEach(element => {
+        element.classList.remove('stories-el_active')
+      })
+
+      window.croakAPP.activeSlide = indexEl
+      e.currentTarget.classList.add('stories-el_active')
+      galleriSwipe(e.currentTarget, storiesGalleri)
+
+      console.log(window.croakAPP.buttonsParam)
+
+      if(window.croakAPP.buttonsParam) {
+        
+        let storiesContainer = storiesGalleri.parentElement.parentElement
+        let prevBtn = storiesContainer.querySelector('.stories-prev')
+        let storiesNext = storiesContainer.querySelector('.stories-next')
+        
+        if(window.croakAPP.activeSlide == 0) {
+          prevBtn.setAttribute('disabled', true)
+          prevBtn.classList.add('btn_disabled')
+        }
+        else {
+          prevBtn.removeAttribute('disabled')
+          prevBtn.classList.remove('btn_disabled')
+        }
+        if(window.croakAPP.activeSlide == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
+          storiesNext.setAttribute('disabled', true)
+          storiesNext.classList.add('btn_disabled')
+        }
+        else {
+          storiesNext.removeAttribute('disabled')
+          storiesNext.classList.remove('btn_disabled')
+        }
+      }
+
+    })
+  })
+}
+
+function nextClick(storiesGalleri) {
+
+  let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
+
+  document.querySelectorAll('.galleri .galleri__el').forEach(element => {
+    element.classList.remove('stories-el_active')
+  })
+
+  if(window.croakAPP.buttonsParam) {
+    let storiesContainer = storiesGalleri.parentElement.parentElement
+    if(window.croakAPP.activeSlide <= 1) {
+      let prevBtn = storiesContainer.querySelector('.stories-prev')
+      prevBtn.removeAttribute('disabled')
+      prevBtn.classList.remove('btn_disabled')
+      prevBtn.classList.add('stories-el_active')
+    }
+    if(window.croakAPP.activeSlide === lengthEl - 2) {
+      let nextBtn = storiesContainer.querySelector('.stories-next')
+      nextBtn.setAttribute('disabled', true)
+      nextBtn.classList.add('btn_disabled')
+    }
+  }
+  if(window.croakAPP.activeSlide < (lengthEl - 1)) {
+
+    window.croakAPP.activeSlide += 1
+
+    let elActive = storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide]
+    elActive.classList.add('stories-el_active')
+    galleriSwipe(elActive, storiesGalleri)
+  }
+}
+
+function galleriSwipe(el, galleriEssence, deskSwipe) {
+  let elRight = el.getBoundingClientRect().right
+  el.parentElement.querySelectorAll('video').forEach((el) => {
+    el.removeAttribute('autoplay')
+    el.pause()
+  })
+
+  if(deskSwipe === undefined) {
+    deskSwipe = false
+  }
+
+  let videoEl = el.querySelector('video')
+
+  if(videoEl && el.classList.contains('stories-el_active')) {
+    videoEl.setAttribute('autoplay', true)
+    videoEl.play()
+  }
+
+  function checkCenter (el) {
+    let elCenter = el.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)
+    return elCenter <= ((window.innerWidth / 2) + (el.getBoundingClientRect().width / window.elementScale / 2)) && elCenter >= ((window.innerWidth / 2) - (el.getBoundingClientRect().width / window.elementScale / 3))
+  }
+
+  let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
+
+  const galleriEssenceRect = galleriEssence.getBoundingClientRect();
+  const elRect = el.getBoundingClientRect();
+  const translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
+  galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
+
+  let galleriScrW = galleriEssence.scrollWidth
+  let galleriWrapper = galleriEssence.parentElement
+  let galleriWrapperClW = galleriWrapper.clientWidth
+
+  let startX = 0 
+  let isActive = false
+
+  let prevDiff = -translateX
+  let diff = 0
+  let counter = 0
+
+  let rightBoundary = (galleriWrapperClW - galleriScrW)
+
+  function startSwipe (e) {
+    e.preventDefault()
+
+    galleriEssence.style.cursor = "grabbing"
+    isActive = true
+
+    startX = e.clientX
+  }
+  function moveSwipe (e) {
+    e.preventDefault()
+    if(!isActive) {
+      return
+    }
+
+    if(counter === 0) {
+      galleriEssence.querySelectorAll('.galleri__el').forEach((el, index, array) => {
+        el.classList.remove('stories-el_active')
+        el.style.pointerEvents = "none"
+        el.parentElement.querySelectorAll('video').forEach((el) => {
+          el.removeAttribute('autoplay')
+          el.pause()
+        })
+      })
+      counter++
+    }
+
+    diff = (startX - e.clientX - prevDiff)
+    let currDiff = -diff
+
+    if(diff < -(galleriScrW - galleriWrapperClW)) {
+      diff += currDiff - (galleriScrW - galleriWrapperClW + 20)
+    }
+    if(currDiff < rightBoundary){
+      diff += currDiff - (rightBoundary - 20)
+    }
+
+    galleriEssence.style.transform = `translate3d(${-diff}px, ${-(galleriEssence.getBoundingClientRect().height / 2)}px, 0)`
+  
+    if(window.deskSwipeFocus) {
+      galleriEssence.querySelectorAll('.galleri__el').forEach((item, index, array) => {
+        if(checkCenter(item)) {
+          item.classList.add('stories-el_active')
+          window.croakAPP.activeSlide = index
+        }
+        else {
+          item.classList.remove('stories-el_active')
+        }
+      })
+    }
+
+  }
+  function endSwipe (e) {
+    isActive = false
+    galleriEssence.style.cursor = "grab"
+
+    prevDiff = -diff
+
+    galleriEssence.querySelectorAll('.galleri__el').forEach((el) => {
+      el.style.pointerEvents = "initial"
+    })
+    counter = 0
+
+  }
+  if(window.innerWidth >= 768 && window.deskSwipe) {
+    galleriWrapper.addEventListener('mousedown', startSwipe)
+    galleriWrapper.addEventListener('mousemove', moveSwipe)
+    galleriWrapper.addEventListener('mouseup', endSwipe)
+    galleriWrapper.addEventListener('mouseleave', endSwipe)
+  }
+}
+
+function prevClick(storiesGalleri) {
+
+  if(window.croakAPP.buttonsParam) {
+
+    let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
+    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let storiesNext = storiesContainer.querySelector('.stories-next')
+    let storiesprev = storiesContainer.querySelector('.stories-prev')
+
+    if(window.croakAPP.activeSlide === lengthEl - 1) {
+      storiesNext.removeAttribute('disabled')
+      storiesNext.classList.remove('btn_disabled')
+    }
+    if(window.croakAPP.activeSlide === 1) {
+      storiesprev.setAttribute('disabled', true)
+      storiesprev.classList.add('btn_disabled')
+    }
+  }
+
+  document.querySelectorAll('.galleri .galleri__el').forEach(element => {
+    element.classList.remove('stories-el_active')
+  })
+
+  if(window.croakAPP.activeSlide != 0) {
+    window.croakAPP.activeSlide -= 1
+    let elActive = storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide]
+    elActive.classList.add('stories-el_active')
+    galleriSwipe(elActive, storiesGalleri)
+  }
+}
+
+function clickExit (storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+  storiesOut.addEventListener('click', () => {
+    deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+  })
+}
+
+function remClassContainer (storiesContainer) {
+  return new Promise((resolve) => {
+    storiesContainer.classList.remove('stories-container_active')
+    resolve()
+  })
+}
+function remFromBody(storiesContainer) {
+  document.body.removeChild(storiesContainer)
+}
+async function delContainer (storiesContainer) {
+  await remClassContainer(storiesContainer)
+  setTimeout(() => {
+    remFromBody(storiesContainer)
+  }, 300)
+}
+
+let scrollPosition = 0
+let bodyEl = document.querySelector('body')
+function disableScroll () {
+  scrollPosition = window.pageYOffset;
+  bodyEl.style.overflow = 'hidden';
+  bodyEl.style.position = 'fixed';
+  bodyEl.style.top = `-${scrollPosition}px`;
+  bodyEl.style.width = '100%';
+}
+function enableScroll () {
+  bodyEl.style.removeProperty('overflow');
+  bodyEl.style.removeProperty('position');
+  bodyEl.style.removeProperty('top');
+  bodyEl.style.removeProperty('width');
+  window.scrollTo(0, scrollPosition);
+}
+
+function deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+  document.removeEventListener('keydown', keyEvent)
+  startXSwipe = 0
+  startYSwipe = 0
+  document.removeEventListener('touchstart', mobTouchStart)
+  document.removeEventListener('touchend', mobTouchEnd)
+  window.croakAPP.activeSlide = undefined
+  delContainer(storiesContainer)
+  enableScroll()
+  storiesGalleri.classList.remove('galleri_transform')
+  if(window.croakAPP.buttonsParam) {
+
+    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let prevBtn = storiesContainer.querySelector('.stories-prev')
+    let storiesNext = storiesContainer.querySelector('.stories-next')
+
+    setTimeout(() => {
+
+      prevBtn.removeAttribute('disabled')
+      prevBtn.classList.remove('btn_disabled')
+      storiesNext.removeAttribute('disabled')
+      storiesNext.classList.remove('btn_disabled')
+      
+      window.croakAPP.buttonsParam = false
+    }, 300)
+  }
+}
+
+const heightControl = () => {
+  const doc = document.documentElement
+  doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+}
+
+class croakSlider {
+  constructor(params) {
+
+    window.croakAPP = {
+      activeSlide: undefined,
+      buttonsParam: false
+    }
+
+    this.stories = false
+    this.keyboard = false
+    this.gap
+    this.scale
+    this.opacity
+    this.DOMElement
+    this.mobileVideo = false
+    this.deskStories = false
+    this.deskSwipeFocus = false
+    this.deskSwipe = false
+
+    if(params.DOMElement) {
+      this.DOMElement = params.DOMElement
+    }
+    if(params.buttons) {
+      window.croakAPP.buttonsParam = true
+    }
+    if(params.keyboard) {
+      this.keyboard = params.keyboard
+    }
+    if(params.gap) {
+      this.gap = `${params.gap}px`
+    }
+    if(params.scale) {
+      this.scale = params.scale
+      window.elementScale = this.scale
+    }
+    if(params.opacity) {
+      this.opacity = params.opacity
+    }
+    if(params.mobileVideo === true) {
+      this.mobileVideo = true
+    }
+    if(params.deskStories === true) {
+      this.deskStories = true
+    }
+    if(params.deskSwipe === true) {
+      window.deskSwipe = true
+    }
+    if(params.deskSwipeFocus === true) {
+      window.deskSwipeFocus = true
+    }
+
+    if(this.DOMElement) {
+
+      document.querySelectorAll(this.DOMElement).forEach((elContainer) => {
+        elContainer.querySelectorAll('[data-el], [data-video-el]').forEach((elSlider, index, array) => {
+          elSlider.addEventListener('click', () => {
+
+            window.croakAPP.activeSlide = index
+            setTimeout(() => {
+              disableScroll()
+            }, 350)
+
+            let storiesGalleri = createGallery(this.gap)
+            createElements(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
+
+            let storiesOut = createExitBtn()
+            let storiesContainer = createContainer()
+
+            let storiesWrapper = document.createElement("div")
+            storiesWrapper.classList.add('stories-wrapper')
+
+            storiesContainer.appendChild(storiesWrapper)
+            storiesWrapper.appendChild(storiesGalleri)
+            storiesContainer.appendChild(storiesOut)
+            storiesContainer.style.setProperty('--galleri-opacity', this.opacity)
+
+            if(storiesGalleri) {
+              document.querySelectorAll('.galleri .galleri__el').forEach(element => {
+                element.classList.remove('stories-el_active')
+              })
+              storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide].classList.add('stories-el_active')
+              galleriSwipe(storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide], storiesGalleri, this.deskSwipe)
+              setTimeout(() => {
+                storiesGalleri.classList.add('galleri_transform')
+              }, 200)
+            }
+
+            let dist = 50
+            let startXSwipe = 0
+            let startYSwipe = 0 
+            function mobTouchStart (e) {
+              
+              startXSwipe = e.touches[0].clientX
+              startYSwipe = e.touches[0].clientY
+            }
+            function mobTouchEnd (e) {
+
+              let xEnd = e.changedTouches[0].clientX
+              let yEnd = e.changedTouches[0].clientY
+              let diffX = startXSwipe - xEnd
+              let diffY = startYSwipe - yEnd
+          
+              if(Math.abs(diffX - diffY) > 0 && Math.abs(diffX) > dist) {
+                if(diffX > 0) {
+                  if(window.croakAPP.activeSlide === storiesGalleri.querySelectorAll('.galleri__el').length - 1) { 
+                    return
+                  }
+                  nextClick(storiesGalleri)
+                }
+                else if(diffX < 0){
+                  if(window.croakAPP.activeSlide === 0) { 
+                    return
+                  }
+                  prevClick(storiesGalleri)
+                }
+              }
+            }
+
+            function keyEvent (event) {
+              if(event.key === 'ArrowRight') {
+                nextClick(storiesGalleri)
+              }
+              if(event.key === 'ArrowLeft') {
+                prevClick(storiesGalleri)
+              }
+              if(event.key === 'd') {
+                nextClick(storiesGalleri)
+              }
+              if(event.key === 'a') {
+                prevClick(storiesGalleri)
+              }
+              if(event.key === 'Escape') {
+                deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+              }
+            }
+
+            clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+
+            if(window.croakAPP.buttonsParam) {
+              console.log(window.croakAPP.buttonsParam)
+              let nextBtn = createNextButton(storiesContainer, storiesGalleri, this.DOMElement)
+              let prevBtn = createPrevButton(storiesContainer, storiesGalleri, this.DOMElement)
+  
+              nextBtn.addEventListener('click', () => {
+                nextClick(storiesGalleri)
+              })
+              prevBtn.addEventListener('click', () => {
+                prevClick(storiesGalleri)
+              })
+            }
+
+            if(this.keyboard) {
+              document.addEventListener('keydown', keyEvent)
+            
+              if(window.innerWidth <= 768) {
+                document.removeEventListener('keydown', keyEvent)
+              }
+            }
+
+            document.addEventListener('touchstart', mobTouchStart)
+            document.addEventListener('touchend', mobTouchEnd)
+
+            clickGalleri(storiesGalleri)
+              
+          })
+        })
+      })
+    }
+  }
+}

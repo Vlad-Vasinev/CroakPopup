@@ -1,24 +1,31 @@
 
-import { getDistanceStories } from "./functions/slidesControl.js"
-import { rightMovement } from "./functions/functions.js"
-import { leftMovement } from "./functions/functions.js"
 
-import { storiesExit } from "./functions/storiesOut.js"
-import { storiesExitBtn } from "./functions/storiesExit.js"
-import { closeStories } from "./functions/closeStories.js"
-import { sliderOpen } from "./functions/sliderOpen.js"
-import { disableScroll } from "./functions/scrollFunc.js"
+import { createContainer } from "./create/createContainer.js"
+import { createGallery } from "./create/createGallery.js"
+import { createElements } from "./create/createElements.js"
+import { createExitBtn } from "./create/createExitBtn.js"
+import { createNextButton, createPrevButton } from "./create/createButtons.js"
 
-import { storiesGallery } from "./functions/storiesGallery.js"
-import { storiesContainerEl } from "./functions/storiesContainer.js"
-import { fillSlider } from "./functions/fillSlider.js"
+import { clickGalleri } from "./events/clickGalleri.js"
+import { galleriSwipe } from "./events/galleriSwipe.js"
+import { nextClick } from "./events/nextClick.js"
+import { prevClick } from "./events/prevClick.js"
 
-import { appHeight } from "./functions/appResize.js"
+import { clickExit } from "./events/clickExit.js"
+import { deleteGalleri } from "./delete/deleteGalleri.js"
+import { disableScroll } from "./appControl/scrollControl.js"
 
-class croakSlider {
-  constructor(object) {
+import { heightControl } from "./appControl/heightControl.js"
+
+export class croakSlider {
+  constructor(params) {
+
+    window.croakAPP = {
+      activeSlide: undefined,
+      buttonsParam: false
+    }
+
     this.stories = false
-    this.buttons = false
     this.keyboard = false
     this.gap
     this.scale
@@ -29,66 +36,54 @@ class croakSlider {
     this.deskSwipeFocus = false
     this.deskSwipe = false
 
-    Object.entries(object).forEach((element) => {
-      if(element[0] === "stories") {
-        this.stories = true
-        if(element[1].DOMElement) {
-          this.DOMElement = element[1].DOMElement
-        }
-        if(element[1].buttons) {
-          this.buttons = element[1].buttons
-        }
-        if(element[1].keyboard) {
-          this.keyboard = element[1].keyboard
-        }
-        if(element[1].gap) {
-          this.gap = `${element[1].gap}px`
-        }
-        if(element[1].scale) {
-          this.scale = element[1].scale
-          window.elementScale = this.scale
-        }
-        if(element[1].opacity) {
-          this.opacity = element[1].opacity
-        }
-        if(element[1].mobileVideo === true) {
-          this.mobileVideo = true
-        }
-        if(element[1].deskStories === true) {
-          this.deskStories = true
-        }
-        if(element[1].deskSwipe === true) {
-          window.deskSwipe = true
-        }
-        if(element[1].deskSwipeFocus === true) {
-          window.deskSwipeFocus = true
-        }
-      }
-    })
-
-    //console.log(this.mobileVideo)
-
-    window.countIndex = undefined
-    window.buttons = this.buttons
-    window.keyboard = this.keyboard
+    if(params.DOMElement) {
+      this.DOMElement = params.DOMElement
+    }
+    if(params.buttons) {
+      window.croakAPP.buttonsParam = true
+    }
+    if(params.keyboard) {
+      this.keyboard = params.keyboard
+    }
+    if(params.gap) {
+      this.gap = `${params.gap}px`
+    }
+    if(params.scale) {
+      this.scale = params.scale
+      window.elementScale = this.scale
+    }
+    if(params.opacity) {
+      this.opacity = params.opacity
+    }
+    if(params.mobileVideo === true) {
+      this.mobileVideo = true
+    }
+    if(params.deskStories === true) {
+      this.deskStories = true
+    }
+    if(params.deskSwipe === true) {
+      window.deskSwipe = true
+    }
+    if(params.deskSwipeFocus === true) {
+      window.deskSwipeFocus = true
+    }
 
     if(this.DOMElement) {
 
       document.querySelectorAll(this.DOMElement).forEach((elContainer) => {
         elContainer.querySelectorAll('[data-el], [data-video-el]').forEach((elSlider, index, array) => {
           elSlider.addEventListener('click', () => {
-            //console.log(elSlider + `${index}`)
 
-            window.countIndex = index
+            window.croakAPP.activeSlide = index
             setTimeout(() => {
               disableScroll()
             }, 350)
 
-            let storiesGalleri = storiesGallery(this.gap)
-            fillSlider(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
+            let storiesGalleri = createGallery(this.gap)
+            createElements(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
 
-            let storiesOut = storiesExitBtn()
-            let storiesContainer = storiesContainerEl()
+            let storiesOut = createExitBtn()
+            let storiesContainer = createContainer()
 
             let storiesWrapper = document.createElement("div")
             storiesWrapper.classList.add('stories-wrapper')
@@ -102,8 +97,8 @@ class croakSlider {
               document.querySelectorAll('.galleri .galleri__el').forEach(element => {
                 element.classList.remove('stories-el_active')
               })
-              document.querySelectorAll('.galleri .galleri__el')[window.countIndex].classList.add('stories-el_active')
-              getDistanceStories(document.querySelectorAll('.galleri .galleri__el')[window.countIndex], storiesGalleri, this.deskSwipe)
+              storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide].classList.add('stories-el_active')
+              galleriSwipe(storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide], storiesGalleri, this.deskSwipe)
               setTimeout(() => {
                 storiesGalleri.classList.add('galleri_transform')
               }, 200)
@@ -126,73 +121,54 @@ class croakSlider {
           
               if(Math.abs(diffX - diffY) > 0 && Math.abs(diffX) > dist) {
                 if(diffX > 0) {
-                  if(window.countIndex === storiesGalleri.querySelectorAll('.galleri__el').length - 1) { 
+                  if(window.croakAPP.activeSlide === storiesGalleri.querySelectorAll('.galleri__el').length - 1) { 
                     return
                   }
-                  rightMovement(storiesGalleri)
+                  nextClick(storiesGalleri)
                 }
                 else if(diffX < 0){
-                  if(window.countIndex === 0) { 
+                  if(window.croakAPP.activeSlide === 0) { 
                     return
                   }
-                  leftMovement(storiesGalleri)
+                  prevClick(storiesGalleri)
                 }
               }
             }
 
             function keyEvent (event) {
               if(event.key === 'ArrowRight') {
-                if(window.countIndex !== (array.length - 1))
-                rightMovement(storiesGalleri)
+                nextClick(storiesGalleri)
               }
               if(event.key === 'ArrowLeft') {
-                if(window.countIndex !== 0)
-                leftMovement(storiesGalleri)
+                prevClick(storiesGalleri)
               }
               if(event.key === 'd') {
-                if(window.countIndex !== (array.length - 1))
-                rightMovement(storiesGalleri)
+                nextClick(storiesGalleri)
               }
               if(event.key === 'a') {
-                if(window.countIndex !== 0)
-                leftMovement(storiesGalleri)
+                prevClick(storiesGalleri)
               }
               if(event.key === 'Escape') {
-                console.log("escape")
-                closeStories(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+                deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
               }
             }
 
-            storiesExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+            clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
 
-            if(window.buttons) {
-              let customPrevArrow = document.querySelector(this.DOMElement).querySelector('.stories-prev').cloneNode()//custom buttons must be not here
-              let customNextArrow = document.querySelector(this.DOMElement).querySelector('.stories-next').cloneNode()//custom buttons must be not here 
+            if(window.croakAPP.buttonsParam) {
+              console.log(window.croakAPP.buttonsParam)
+              let nextBtn = createNextButton(storiesContainer, storiesGalleri, this.DOMElement)
+              let prevBtn = createPrevButton(storiesContainer, storiesGalleri, this.DOMElement)
   
-              storiesContainer.appendChild(customPrevArrow)
-              storiesContainer.appendChild(customNextArrow)
-              customPrevArrow.classList.add('custom-left')
-              customNextArrow.classList.add('custom-right')
-  
-              if(window.countIndex == 0) {
-                storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').setAttribute('disabled', true)
-                storiesGalleri.parentElement.parentElement.querySelector('.stories-prev').classList.add('btn_disabled')
-              }
-              else if(window.countIndex == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
-                console.log(window.countIndex)
-                storiesGalleri.parentElement.parentElement.querySelector('.stories-next').setAttribute('disabled', true)
-                storiesGalleri.parentElement.parentElement.querySelector('.stories-next').classList.add('btn_disabled')
-              }
-  
-              customPrevArrow.addEventListener('click', () => {
-                leftMovement(storiesGalleri)
+              nextBtn.addEventListener('click', () => {
+                nextClick(storiesGalleri)
               })
-              customNextArrow.addEventListener('click', () => {
-                rightMovement(storiesGalleri)
+              prevBtn.addEventListener('click', () => {
+                prevClick(storiesGalleri)
               })
             }
 
-            if(window.keyboard) {
+            if(this.keyboard) {
               document.addEventListener('keydown', keyEvent)
             
               if(window.innerWidth <= 768) {
@@ -203,7 +179,7 @@ class croakSlider {
             document.addEventListener('touchstart', mobTouchStart)
             document.addEventListener('touchend', mobTouchEnd)
 
-            sliderOpen(storiesGalleri)
+            clickGalleri(storiesGalleri)
               
           })
         })
@@ -212,20 +188,20 @@ class croakSlider {
   }
 }
 
-appHeight()
-window.addEventListener('resize', appHeight)
+heightControl()
+window.addEventListener('resize', heightControl)
 
 let frog = new croakSlider({
-  stories: {
-    DOMElement: "div[data-croak-container]",
-    gap: 50,
-    scale: .75,
-    opacity: 0.95,
-    //mobileVideo: true,
-    deskStories: true,
-    deskSwipe: true,
-    keyboard: true,
-    deskSwipeFocus: true,
-    //buttons: true,
-  },
+  DOMElement: "div[data-croak-container]",
+  gap: 50,
+  scale: .75,
+  opacity: 0.95,
+  //mobileVideo: true,
+  deskStories: true,
+  deskSwipe: true,
+  //deskSwipeFocus: true,
+  keyboard: true,
+  //buttons: true,
 });
+
+// croak.js 80: //console.log(elSlider + `${index}`)

@@ -78,9 +78,8 @@ html {
   z-index: 100;
 }
 .galleri.galleri_transform {
-  /* transition: transform .3s ease; */
-  /* transition: all 300ms cubic-bezier(0.350, 0.350, 0.750, 0.750); */
-  transition: all 300ms cubic-bezier(0.390, 0.490, 0.545, 0.760);
+  /* transition: transform .25s cubic-bezier(0.390, 0.430, 0.390, 0.390); */
+  transition: transform .25s cubic-bezier(0.390, 0.490, 0.545, 0.760);
 }
 
 /* .galleri::-webkit-scrollbar {  transition: all 300ms cubic-bezier(0.550, 0.055, 0.675, 0.190);
@@ -107,13 +106,9 @@ html {
   border-radius: calc(8px + 4 * (100vw - 1280px) / 640);
   overflow: hidden;
   object-fit: contain;
-  /* width: calc(366.6666666667px + 183.3333333333 * (100vw - 1280px) / 640);
-  height: calc(566.6666666667px + 283.3333333333 * (100vw - 1280px) / 640); */
-
   width: calc(346.6666666667px + 173.3333333333 * (100vw - 1280px) / 640);
   height: calc(533.3333333333px + 266.6666666667 * (100vw - 1280px) / 640);
   transform: scale(var(--img-scale)) translateY(-38%);
-  /* transform: scale(var(--img-scale)) translateY(-31%); */
 }
 
 .galleri__el:hover {
@@ -157,22 +152,18 @@ html {
 }
 
 @media(max-width: 1200px) {
-
   .galleri-opened {
     gap: 90px;
     margin: unset;
     width: 100%;
   }
-
   .galleri__el {
     margin-top: 0;
     border-radius: 12px;
   }
-
   .galleri__el:hover {
     border: none;
   }
-
 }
 
 .marker-stories {
@@ -189,12 +180,10 @@ html {
 }
 
 .galleri__el.stories-el_active.galleri__el_stories {
-  /* transform: scale(1) translateY(-25%); */
   transform: scale(1) translateY(-28%);
 }
 
 .stories-container {
-  /* overflow-x: scroll; */
   top: 0;
   position: fixed;
   width: 100vw;
