@@ -116,18 +116,16 @@ npm i vanilla-croakpopup
 import { croakSlider } from "../node_modules/vanilla-croakpopup/js/croak.min.js"
 
 let frog = new croakSlider({
-  stories: {
-    DOMElement: "div[data-croak-container]",
-    gap: 50,
-    scale: .75,
-    opacity: 0.95,
-    deskStories: true, //optional
-    deskSwipe: true, // optional🔬, works without buttons
-    deskSwipeFocus: true, // optioal, works with deskSwipe and keyboard
-    //mobileVideo: true, //optional
-    keyboard: true, //optional
-    buttons: true, //optional
-  },
+  DOMElement: "div[data-croak-container]",
+  gap: 50,
+  scale: .75,
+  opacity: 0.95,
+  deskStories: true, //optional
+  deskSwipe: true, // optional🔬, works without buttons
+  deskSwipeFocus: true, // optioal, works with deskSwipe and keyboard
+  //mobileVideo: true, //optional
+  keyboard: true, //optional
+  buttons: true, //optional
 });
 ```
 
