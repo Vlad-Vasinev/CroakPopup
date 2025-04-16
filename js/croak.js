@@ -156,7 +156,6 @@ export class croakSlider {
             clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
 
             if(window.croakAPP.buttonsParam) {
-              console.log(window.croakAPP.buttonsParam)
               let nextBtn = createNextButton(storiesContainer, storiesGalleri, this.DOMElement)
               let prevBtn = createPrevButton(storiesContainer, storiesGalleri, this.DOMElement)
   
@@ -203,5 +202,3 @@ let frog = new croakSlider({
   keyboard: true,
   //buttons: true,
 });
-
-// croak.js 80: //console.log(elSlider + `${index}`)

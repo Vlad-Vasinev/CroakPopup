@@ -11,8 +11,6 @@ export function clickGalleri (storiesGalleri) {
       e.currentTarget.classList.add('stories-el_active')
       galleriSwipe(e.currentTarget, storiesGalleri)
 
-      console.log(window.croakAPP.buttonsParam)
-
       if(window.croakAPP.buttonsParam) {
         
         let storiesContainer = storiesGalleri.parentElement.parentElement
