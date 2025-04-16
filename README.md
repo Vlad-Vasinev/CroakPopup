@@ -137,21 +137,20 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 
 ## You have done it🥰
 
-# How does it work?
+<!-- # How does it work?
 
-- the main logic hides behind getDistanceStories function, it takes 2 parametres: current element aka as **`el`**
-and galleri wrapper, aka as **`storiesGallery`**
+- the main logic hides behind galleriSwipe function
 - simply put, the function counts the distance between the center of the screen and the element's distance from the right screen corner
 
-- whole function's code: 
+- code fragment: 
 ```
-function getDistanceStories(el, galleriEssence) {
-  let elRight = el.getBoundingClientRect().right
-
   let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
-  galleriEssence.style.transform = `translateX(${distanceCheck + galleriEssence.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)}px) translateY(-50%)`
-}
-```
+
+  const galleriEssenceRect = galleriEssence.getBoundingClientRect();
+  const elRect = el.getBoundingClientRect();
+  const translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
+  galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
+``` -->
 # Examples:
 
 - https://croak-popup-v1.vercel.app/
