@@ -1,5 +1,9 @@
 
-export function createContainer () {
+export function createContainer (btnParam) {
+
+  if(btnParam) {
+    window.croakAPP.buttonsParam = true
+  }
 
   let storiesContainerElement = document.createElement("div")
   document.body.append(storiesContainerElement)

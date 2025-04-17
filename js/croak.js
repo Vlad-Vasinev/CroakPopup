@@ -27,6 +27,7 @@ export class croakSlider {
 
     this.stories = false
     this.keyboard = false
+    this.buttons = false
     this.gap
     this.scale
     this.opacity
@@ -41,6 +42,7 @@ export class croakSlider {
     }
     if(params.buttons) {
       window.croakAPP.buttonsParam = true
+      this.buttons = true
     }
     if(params.keyboard) {
       this.keyboard = params.keyboard
@@ -83,7 +85,7 @@ export class croakSlider {
             createElements(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
 
             let storiesOut = createExitBtn()
-            let storiesContainer = createContainer()
+            let storiesContainer = createContainer(this.buttons)
 
             let storiesWrapper = document.createElement("div")
             storiesWrapper.classList.add('stories-wrapper')
@@ -155,7 +157,7 @@ export class croakSlider {
 
             clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
 
-            if(window.croakAPP.buttonsParam) {
+            if(this.buttons) {
               let nextBtn = createNextButton(storiesContainer, storiesGalleri, this.DOMElement)
               let prevBtn = createPrevButton(storiesContainer, storiesGalleri, this.DOMElement)
   
@@ -198,7 +200,7 @@ let frog = new croakSlider({
   //mobileVideo: true,
   deskStories: true,
   deskSwipe: true,
-  deskSwipeFocus: true,
+  //deskSwipeFocus: true,
   keyboard: true,
   //buttons: true,
 });
