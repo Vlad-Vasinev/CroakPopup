@@ -151,19 +151,15 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
   const translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
   galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
 ``` -->
-# Examples:
 
-- https://croak-popup-v1.vercel.app/
-- https://croak-popup-v21.vercel.app/
-- 
-
-# Code Examples:
-
-- https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL **`horizontal-view`**, **`no-buttons`**, **`no-keyboard`**
-- https://codepen.io/Vlad_Vasinev/pen/dPyQZdL **`desktop-swipe`**, **`no-buttons`**, **`no-keyboard`**
-- https://codepen.io/Vlad_Vasinev/pen/zxYbzmz **`desktop-swipe-focus`**, **`keyboard`**, **`no-buttons`**
-- https://codepen.io/Vlad_Vasinev/pen/ByaKboN **`vertical-view`**, **`keyboard`**
-- https://codepen.io/Vlad_Vasinev/pen/RNwKKGM **`vertical-view`**, **`keyboard`**, **`buttons`**
+# Showcase:
+| Live example                        | Sandbox example                             | Features                                  |
+|-------------------------------------|---------------------------------------------|-------------------------------------------|
+| https://croak-popup-v21.vercel.app/ | https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL | **`desktop`**, **`no buttons`**, **`no keyboard`**|
+|                                     | https://codepen.io/Vlad_Vasinev/pen/dPyQZdL | **`desktop-swipe`**, **`no buttons`**, **`no keyboard`**|
+| https://croak-popup-v1.vercel.app/  | https://codepen.io/Vlad_Vasinev/pen/zxYbzmz | **`desktop-swipe-focus`**, **`keyboard`**, **`no buttons`**|
+|                                     | https://codepen.io/Vlad_Vasinev/pen/ByaKboN | **`mobile`**, **`keyboard`**|
+|                                     | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`mobile`**, **`keyboard`**, **`buttons`**|
 
 # Tutorial:
 
