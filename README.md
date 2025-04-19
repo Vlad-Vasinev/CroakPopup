@@ -160,8 +160,8 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 # Showcase:
 | Live example                        | Sandbox example                             | Features                                  |
 |-------------------------------------|---------------------------------------------|-------------------------------------------|
-| https://croak-popup-v21.vercel.app/ | https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL | **`desktop`**, **`no buttons, keyboard`**|
-|                                     | https://codepen.io/Vlad_Vasinev/pen/dPyQZdL | **`desktop-swipe`**, **`no buttons, keyboard`**|
+| https://croak-popup-v21.vercel.app/ | https://codepen.io/Vlad_Vasinev/pen/ZYEWwqL | **`desktop`**, **`no buttons`**, **`no keyboard`**|
+|                                     | https://codepen.io/Vlad_Vasinev/pen/dPyQZdL | **`desktop-swipe`**, **`no buttons`**, **`no keyboard`**|
 | https://croak-popup-v1.vercel.app/  | https://codepen.io/Vlad_Vasinev/pen/zxYbzmz | **`desktop-swipe-focus`**, **`keyboard`**, **`no-buttons`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/ByaKboN | **`mobile`**, **`keyboard`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`mobile`**, **`keyboard, `**|
