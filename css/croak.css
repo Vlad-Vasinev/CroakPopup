@@ -151,6 +151,11 @@ html {
   height: 2px;
 }
 
+.galleri-fullsize .galleri__el {
+  width: 65vw;
+  height: 100vh;
+}
+
 @media(max-width: 1200px) {
   .galleri-opened {
     gap: 90px;
@@ -163,6 +168,10 @@ html {
   }
   .galleri__el:hover {
     border: none;
+  }
+  .galleri-fullsize .galleri__el {
+    width: 100%;
+    height: 100vh;
   }
 }
 
@@ -277,6 +286,10 @@ html {
   right: 0;
   margin: 0 auto;
   z-index: 1;
+}
+
+.stories-wrapper.galleri-fullsize .galleri {
+  height: 100vh;
 }
 
 @media(max-width: 768px) {

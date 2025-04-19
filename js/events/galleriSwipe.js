@@ -27,7 +27,8 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
   const galleriEssenceRect = galleriEssence.getBoundingClientRect();
   const elRect = el.getBoundingClientRect();
   const translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
-  galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
+  galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
+  //galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
 
   let galleriScrW = galleriEssence.scrollWidth
   let galleriWrapper = galleriEssence.parentElement
@@ -78,7 +79,7 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
       diff += currDiff - (rightBoundary - 20)
     }
 
-    galleriEssence.style.transform = `translate3d(${-diff}px, ${-(galleriEssence.getBoundingClientRect().height / 2)}px, 0)`
+    galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
   
     if(window.deskSwipeFocus) {
       galleriEssence.querySelectorAll('.galleri__el').forEach((item, index, array) => {

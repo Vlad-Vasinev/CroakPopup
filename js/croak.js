@@ -90,6 +90,10 @@ export class croakSlider {
             let storiesWrapper = document.createElement("div")
             storiesWrapper.classList.add('stories-wrapper')
 
+            if(!this.deskStories) {
+              storiesWrapper.classList.add('galleri-fullsize')
+            }
+
             storiesContainer.appendChild(storiesWrapper)
             storiesWrapper.appendChild(storiesGalleri)
             storiesContainer.appendChild(storiesOut)
