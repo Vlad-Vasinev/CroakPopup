@@ -76,6 +76,7 @@ html {
   -ms-flex-direction: column;
   flex-direction: column;
   z-index: 100;
+  /* transition: transform .25s cubic-bezier(0.390, 0.490, 0.545, 0.760); */
 }
 .galleri.galleri_transform {
   transition: transform .25s cubic-bezier(0.390, 0.490, 0.545, 0.760);
