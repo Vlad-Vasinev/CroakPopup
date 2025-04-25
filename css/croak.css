@@ -76,6 +76,7 @@ html {
   -ms-flex-direction: column;
   flex-direction: column;
   z-index: 100;
+  will-change: transform;
   /* transition: transform .25s cubic-bezier(0.390, 0.490, 0.545, 0.760); */
 }
 .galleri.galleri_transform {
@@ -92,6 +93,7 @@ html {
   object-fit: contain;
   width: calc(400px + 200 * (100vw - 1280px) / 640);
   transform: scale(var(--img-scale));
+  will-change: transform;
   /* pointer-events: none; */
 }
 .galleri__el.galleri__el_stories {
