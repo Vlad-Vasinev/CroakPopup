@@ -36,6 +36,7 @@ export class croakSlider {
     this.deskStories = false
     this.deskSwipeFocus = false
     this.deskSwipe = false
+    this.clickGalleri = false
 
     if(params.DOMElement) {
       this.DOMElement = params.DOMElement
@@ -68,6 +69,9 @@ export class croakSlider {
     }
     if(params.deskSwipeFocus === true) {
       window.deskSwipeFocus = true
+    }
+    if(params.clickGalleri === true) {
+      this.clickGalleri = true
     }
 
     if(this.DOMElement) {
@@ -184,8 +188,10 @@ export class croakSlider {
             document.addEventListener('touchstart', mobTouchStart)
             document.addEventListener('touchend', mobTouchEnd)
 
-            clickGalleri(storiesGalleri)
-              
+            if(this.clickGalleri) {
+              clickGalleri(storiesGalleri)
+            }
+            //clickGalleri(storiesGalleri) //works only when "keyboard" and "deskSwipe" and "deskSwipeFocus" are turned of
           })
         })
       })
@@ -198,13 +204,13 @@ window.addEventListener('resize', heightControl)
 
 let frog = new croakSlider({
   DOMElement: "div[data-croak-container]",
-  gap: 50,
+  gap: 10,
   scale: .75,
   opacity: 0.95,
   //mobileVideo: true,
-  deskStories: true,
-  deskSwipe: true,
-  //deskSwipeFocus: true,
-  keyboard: true,
+  deskStories: true, // works only when "keyboard" and "deskSwipe" and "deskSwipeFocus" are turned of
+  deskSwipe: true,   // works only when "keyboard" and "deskSwipe" and "deskSwipeFocus" are turned of
+  deskSwipeFocus: true,
+  //keyboard: true,
   //buttons: true,
 });
