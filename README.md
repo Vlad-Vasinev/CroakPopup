@@ -121,8 +121,8 @@ let frog = new croakSlider({
   scale: .75,
   opacity: 0.95,
   deskStories: true, //optional
-  deskSwipe: true, // optional🔬, works without buttons
-  deskSwipeFocus: true, // optioal, works with deskSwipe and keyboard
+  deskSwipe: true, // experimental, works without buttons, keyboard and clickGallery
+  deskSwipeFocus: true, // experimental, works without buttons, keyboard and clickGallery
   //mobileVideo: true, //optional
   keyboard: true, //optional
   buttons: true, //optional
@@ -159,7 +159,7 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 | https://croak-popup-v1.vercel.app/  | https://codepen.io/Vlad_Vasinev/pen/dPyQZdL | **`desktop-swipe`**, **`no buttons`**, **`no keyboard`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/zxYbzmz | **`click-gallery`**, **`keyboard`**, **`buttons`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/ByaKboN | **`mobile`**, **`keyboard`**|
-|                                     | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`mobile`**, **`keyboard`**, **`buttons`**|
+|                                     | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`desktop`**, **`desktop-swipe`**|
 
 # Tutorial:
 
