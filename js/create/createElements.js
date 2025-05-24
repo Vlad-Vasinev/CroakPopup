@@ -57,7 +57,6 @@ export function createElements (array, storiesGalleri, scale, mobVideo, deskStor
 
       storiesElVideo.setAttribute('loop', true)
       storiesElVideo.setAttribute('playsinline', true)
-      storiesElVideo.setAttribute('poster', "../../content/preload.jpg")
 
       storiesElVideo.appendChild(sourceElement1)
       storiesElVideo.appendChild(sourceElement2)
