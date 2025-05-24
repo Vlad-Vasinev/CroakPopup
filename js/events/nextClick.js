@@ -2,11 +2,10 @@ import { galleriSwipe } from "./galleriSwipe.js"
 
 export function nextClick(storiesGalleri) {
 
+  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
   let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
 
-  document.querySelectorAll('.galleri .galleri__el').forEach(element => {
-    element.classList.remove('stories-el_active')
-  })
+  storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
   if(window.croakAPP.buttonsParam) {
     let storiesContainer = storiesGalleri.parentElement.parentElement
@@ -26,7 +25,7 @@ export function nextClick(storiesGalleri) {
 
     window.croakAPP.activeSlide += 1
 
-    let elActive = storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide]
+    let elActive = storiesGalleriItems[window.croakAPP.activeSlide]
     elActive.classList.add('stories-el_active')
     galleriSwipe(elActive, storiesGalleri)
   }

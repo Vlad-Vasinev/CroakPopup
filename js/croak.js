@@ -104,9 +104,6 @@ export class croakSlider {
             storiesContainer.style.setProperty('--galleri-opacity', this.opacity)
 
             if(storiesGalleri) {
-              document.querySelectorAll('.galleri .galleri__el').forEach(element => {
-                element.classList.remove('stories-el_active')
-              })
               storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide].classList.add('stories-el_active')
               galleriSwipe(storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide], storiesGalleri, this.deskSwipe)
               setTimeout(() => {
@@ -211,6 +208,7 @@ let frog = new croakSlider({
   deskStories: true, // works only when "keyboard" and "deskSwipe" and "deskSwipeFocus" are turned of
   deskSwipe: true,   // works only when "keyboard" and "deskSwipe" and "deskSwipeFocus" are turned of
   deskSwipeFocus: true,
+  //clickGalleri: true,
   //keyboard: true,
   //buttons: true,
 });

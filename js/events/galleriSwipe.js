@@ -112,9 +112,10 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
     setTimeout(() => {
       galleriEssence.classList.add('galleri_transform')
       
-      // galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
+      // galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)` getElementsByClassName
       galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
-      let newActive = galleriEssence.querySelectorAll('.galleri__el')[window.croakAPP.activeSlide]
+      //let newActive = galleriEssence.querySelectorAll('.galleri__el')[window.croakAPP.activeSlide]
+      let newActive = galleriEssence.getElementsByClassName('galleri__el')[window.croakAPP.activeSlide]
       newActive.classList.add('stories-el_active')
       if(newActive.querySelector('video')) {
         newActive.querySelector('video').play()

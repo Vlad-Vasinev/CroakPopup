@@ -7,7 +7,7 @@ export function createNextButton (storiesContainer, storiesGalleri, domEl) {
     storiesContainer.appendChild(customNextArrow)
     customNextArrow.classList.add('custom-right')
 
-    if(window.croakAPP.activeSlide == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
+    if(window.croakAPP.activeSlide == storiesGalleri.getElementsByClassName('galleri__el').length - 1) {
       customNextArrow.setAttribute('disabled', true)
       customNextArrow.classList.add('btn_disabled')
     }

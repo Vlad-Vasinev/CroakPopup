@@ -184,10 +184,18 @@ html {
   position: relative;
   z-index: 1;
   transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
 }
 
 .galleri__el.stories-el_active.galleri__el_stories {
   transform: scale(1) translateY(-28%);
+  -webkit-transform: scale(1) translateY(-28%);
+  -moz-transform: scale(1) translateY(-28%);
+  -o-transform: scale(1) translateY(-28%);
+  -ms-transform: scale(1) translateY(-28%);
 }
 
 .stories-container {
@@ -209,6 +217,10 @@ html {
 }
 .stories-container_active {
   transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -o-transform: translateY(0%);
+  -ms-transform: translateY(0%);
 }
 
 .stories-prev, .stories-next {
