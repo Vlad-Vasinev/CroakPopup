@@ -85,10 +85,13 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
       diff += currDiff - (rightBoundary - 20)
     }
 
+    galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
+
+  }
+  function endSwipe () {
     if(window.deskSwipeFocus) {
       galleriEssence.querySelectorAll('.galleri__el').forEach((item, index, array) => {
         if(checkCenter(item)) {
-            //item.classList.add('stories-el_active')
 
             let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - item.getBoundingClientRect().right
 
@@ -98,16 +101,8 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
 
             window.croakAPP.activeSlide = index
         }
-        // else {
-        //   item.classList.remove('stories-el_active')
-        // }
       })
     }
-
-    galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
-
-  }
-  function endSwipe () {
     //prevDiff = -translateX
     setTimeout(() => {
       galleriEssence.classList.add('galleri_transform')
