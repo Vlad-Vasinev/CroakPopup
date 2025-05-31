@@ -3,7 +3,6 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
   
   let elRight = el.getBoundingClientRect().right
   el.parentElement.querySelectorAll('video').forEach((el) => {
-    el.removeAttribute('autoplay')
     el.pause()
   })
 
@@ -21,7 +20,6 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
   function checkCenter (el) {
     let elCenter = el.getBoundingClientRect().left + (el.getBoundingClientRect().width / 2)
     return elCenter <= ((window.innerWidth / 2) + (el.getBoundingClientRect().width / window.elementScale / 2)) && elCenter >= ((window.innerWidth / 2) - (el.getBoundingClientRect().width / window.elementScale / 2))
-    // return elCenter <= ((window.innerWidth / 2) + (el.getBoundingClientRect().width / window.elementScale / 2)) && elCenter >= ((window.innerWidth / 2) - (el.getBoundingClientRect().width / window.elementScale / 3))
   }
 
   let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
@@ -29,9 +27,8 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
   const galleriEssenceRect = galleriEssence.getBoundingClientRect();
   const elRect = el.getBoundingClientRect();
   let translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
+
   galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
-  //galleriEssence.classList.add('galleri_transform')
-  //galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
 
   let galleriScrW = galleriEssence.scrollWidth
   let galleriWrapper = galleriEssence.parentElement
@@ -50,8 +47,15 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
   function startSwipe (e) {
     e.preventDefault()
 
+    galleriEssence.querySelectorAll('.galleri__el').forEach((el, index, array) => {
+      if(el.querySelector('video')) {
+        el.querySelector('video').pause()
+      }
+    })
+
     galleriEssence.style.cursor = "grabbing"
     isActive = true
+    galleriEssence.classList.remove('galleri_transform')
 
     startX = e.clientX
   }
@@ -63,15 +67,7 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
 
     if(counter === 0) {
       prevDiff = -translateX
-      galleriEssence.querySelectorAll('.galleri__el').forEach((el, index, array) => {
-        el.classList.remove('stories-el_active')
-        el.style.pointerEvents = "none"
-        el.parentElement.querySelectorAll('video').forEach((el) => {
-          el.removeAttribute('autoplay')
-          el.pause()
-        })
-      })
-      galleriEssence.classList.remove('galleri_transform')
+      galleriEssence.querySelectorAll('.galleri__el')[window.croakAPP.activeSlide].classList.remove('stories-el_active')
       counter++
     }
 
@@ -103,13 +99,12 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
         }
       })
     }
-    //prevDiff = -translateX
+
     setTimeout(() => {
+
       galleriEssence.classList.add('galleri_transform')
-      
-      // galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)` getElementsByClassName
       galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
-      //let newActive = galleriEssence.querySelectorAll('.galleri__el')[window.croakAPP.activeSlide]
+
       let newActive = galleriEssence.getElementsByClassName('galleri__el')[window.croakAPP.activeSlide]
       newActive.classList.add('stories-el_active')
       if(newActive.querySelector('video')) {
@@ -121,10 +116,6 @@ export function galleriSwipe(el, galleriEssence, deskSwipe) {
     galleriEssence.style.cursor = "grab"
 
     prevDiff = -diff
-
-    galleriEssence.querySelectorAll('.galleri__el').forEach((el) => {
-      el.style.pointerEvents = "initial"
-    })
     counter = 0
   }
 

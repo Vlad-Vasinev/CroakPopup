@@ -31,10 +31,6 @@ export function clickGalleri (storiesGalleri) {
           storiesNext.setAttribute('disabled', true)
           storiesNext.classList.add('btn_disabled')
         }
-        // if(window.croakAPP.activeSlide == storiesGalleri.querySelectorAll('.galleri__el').length - 1) {
-        //   storiesNext.setAttribute('disabled', true)
-        //   storiesNext.classList.add('btn_disabled')
-        // }
         else {
           storiesNext.removeAttribute('disabled')
           storiesNext.classList.remove('btn_disabled')

@@ -77,10 +77,21 @@ html {
   flex-direction: column;
   z-index: 100;
   will-change: transform;
+  transform: translate3d(0, -50%, 0);
+  -webkit-transform: translate3d(0, -50%, 0);
+  -moz-transform: translate3d(0, -50%, 0);
+  -o-transform: translate3d(0, -50%, 0);
+  -ms-transform: translate3d(0, -50%, 0);
   /* transition: transform .25s cubic-bezier(0.390, 0.490, 0.545, 0.760); */
 }
 .galleri.galleri_transform {
   transition: transform .2s cubic-bezier(0.390, 0.490, 0.545, 0.760);
+  -webkit-transition-duration: .2s;
+  -moz-transition-duration: .2s;
+  -o-transition-duration: .2s;
+  -webkit-animation-timing-function: cubic-bezier(0.390, 0.490, 0.545, 0.760);
+  -moz-animation-timing-function: cubic-bezier(0.390, 0.490, 0.545, 0.760);
+  -o-animation-timing-function: cubic-bezier(0.390, 0.490, 0.545, 0.760);
 }
 
 .galleri__el {
@@ -92,7 +103,11 @@ html {
   overflow: hidden;
   object-fit: contain;
   width: calc(400px + 200 * (100vw - 1280px) / 640);
-  transform: scale(var(--img-scale));
+  transform: scale(var(--img-scale)) translateZ(0);
+  -webkit-transform: scale(var(--img-scale)) translateZ(0);
+  -moz-transform: scale(var(--img-scale)) translateZ(0);
+  -o-transform: scale(var(--img-scale)) translateZ(0);
+  -ms-transform: scale(var(--img-scale)) translateZ(0);
   will-change: transform;
   /* pointer-events: none; */
 }
@@ -118,7 +133,6 @@ html {
   height: 100%;
   object-fit: cover;
   user-select: none;
-  /* pointer-events: none; */
 }
 
 .galleri__el video {
@@ -183,19 +197,19 @@ html {
 .galleri__el.stories-el_active{
   position: relative;
   z-index: 1;
-  transform: scale(1);
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
+  transform: scale(1) translateZ(0);
+  -webkit-transform: scale(1) translateZ(0);
+  -moz-transform: scale(1) translateZ(0);
+  -o-transform: scale(1) translateZ(0);
+  -ms-transform: scale(1) translateZ(0);
 }
 
 .galleri__el.stories-el_active.galleri__el_stories {
-  transform: scale(1) translateY(-28%);
-  -webkit-transform: scale(1) translateY(-28%);
-  -moz-transform: scale(1) translateY(-28%);
-  -o-transform: scale(1) translateY(-28%);
-  -ms-transform: scale(1) translateY(-28%);
+  transform: scale(1) translateY(-28%) translateZ(0);
+  -webkit-transform: scale(1) translateY(-28%) translateZ(0);
+  -moz-transform: scale(1) translateY(-28%) translateZ(0);
+  -o-transform: scale(1) translateY(-28%) translateZ(0);
+  -ms-transform: scale(1) translateY(-28%) translateZ(0);
 }
 
 .stories-container {
