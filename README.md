@@ -121,8 +121,8 @@ let frog = new croakSlider({
   scale: .75,
   opacity: 0.95,
   deskStories: true, //optional
-  deskSwipe: true, // experimental, works without buttons, keyboard and clickGallery
-  deskSwipeFocus: true, // experimental, works without buttons, keyboard and clickGallery
+  deskSwipe: true, // experimental, works when clickGallery is false
+  deskSwipeFocus: true, // experimental, works when clickGallery is false
   //mobileVideo: true, //optional
   keyboard: true, //optional
   buttons: true, //optional
