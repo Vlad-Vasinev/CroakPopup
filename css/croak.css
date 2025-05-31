@@ -1,9 +1,7 @@
 
 body,
 html {
-  font-family: 'Roboto-Regular';
   background-color: #fff;
-  font-size: 16px;
   min-width: 320px;
   max-width: 100%;
   margin: 0;
@@ -11,28 +9,6 @@ html {
   height: 100vh;
   display: grid;
   align-content: center;
-}
-
-@font-face {
-  font-family: 'Roboto-Regular';
-  src: url('/fonts/static/Roboto-Regular.ttf');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Roboto-Medium';
-  src: url('/fonts/static/Roboto-Medium.ttf');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Roboto-Bold';
-  src: url('/fonts/static/Roboto-Bold.ttf');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
 }
 
 .close-gallery {
@@ -121,7 +97,7 @@ html {
   object-fit: contain;
   width: calc(346.6666666667px + 173.3333333333 * (100vw - 1280px) / 640);
   height: calc(533.3333333333px + 266.6666666667 * (100vw - 1280px) / 640);
-  transform: scale(var(--img-scale)) translateY(-38%);
+  transform: scale(var(--img-scale));
 }
 
 .gallery__el:hover {
@@ -153,16 +129,6 @@ html {
   transform: translateY(-50%);
 }
 
-.marker {
-  position: fixed;
-  z-index: 500;
-  opacity: 0;
-  top: 50%;
-  background-color: pink;
-  width: 100%;
-  height: 2px;
-}
-
 .gallery-fullsize .gallery__el {
   width: 65vw;
   height: 100vh;
@@ -187,13 +153,6 @@ html {
   }
 }
 
-.marker-stories {
-  transform: rotate(90deg);
-  top: auto;
-  bottom: 0;
-  left: 0;
-}
-
 .gallery__el.stories-el_active{
   position: relative;
   z-index: 1;
@@ -205,11 +164,11 @@ html {
 }
 
 .gallery__el.stories-el_active.gallery__el_stories {
-  transform: scale(1) translateY(-28%) translateZ(0);
-  -webkit-transform: scale(1) translateY(-28%) translateZ(0);
-  -moz-transform: scale(1) translateY(-28%) translateZ(0);
-  -o-transform: scale(1) translateY(-28%) translateZ(0);
-  -ms-transform: scale(1) translateY(-28%) translateZ(0);
+  transform: scale(1) translateZ(0);
+  -webkit-transform: scale(1) translateZ(0);
+  -moz-transform: scale(1) translateZ(0);
+  -o-transform: scale(1) translateZ(0);
+  -ms-transform: scale(1) translateZ(0);
 }
 
 .stories-container {
@@ -224,6 +183,7 @@ html {
   justify-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
+  align-items: center;
   background-color: rgba(150, 145, 145, var(--gallery-opacity));
   transform: translateY(100%);
   transition: transform .3s, -webkit-transform 0.3s;
@@ -303,10 +263,8 @@ html {
 .stories-wrapper {
   width: 100%;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   left: 0;
-  height: calc(233.3333333333px + 116.6666666667 * (100vw - 1280px) / 640);
+  height: calc(533.3333333333px + 266.6666666667 * (100vw - 1280px) / 640);
   right: 0;
   margin: 0 auto;
   z-index: 1;

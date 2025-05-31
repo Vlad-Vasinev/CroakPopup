@@ -17,26 +17,26 @@ function createContainer (btnParam) {
 
 function createGallery (gap) {
   let stories = document.createElement('div')
-  stories.classList.add('galleri')
-  stories.style.setProperty('--galleri-gap', gap)
-  stories.classList.add('galleri-opened')
+  stories.classList.add('gallery')
+  stories.style.setProperty('--gallery-gap', gap)
+  stories.classList.add('gallery-opened')
 
   return stories
 
 }
 
-function createElements (array, storiesGalleri, scale, mobVideo, deskStories) {
+function createElements (array, storiesGallery, scale, mobVideo, deskStories) {
   
   array.forEach((item) => {
 
     let storiesEl = document.createElement('div')
     if(deskStories && window.innerWidth >= 768) {
-      storiesEl.classList.add('galleri__el')
-      storiesEl.classList.add('galleri__el_stories')
+      storiesEl.classList.add('gallery__el')
+      storiesEl.classList.add('gallery__el_stories')
       storiesEl.style.setProperty('--img-scale', scale)
     }
     else {
-      storiesEl.classList.add('galleri__el')
+      storiesEl.classList.add('gallery__el')
       storiesEl.style.setProperty('--img-scale', scale)
     }
 
@@ -88,13 +88,13 @@ function createElements (array, storiesGalleri, scale, mobVideo, deskStories) {
       storiesElVideo.appendChild(sourceElement2)
       storiesElVideo.setAttribute('preload', true)
       storiesEl.append(storiesElVideo)
-      storiesGalleri.append(storiesEl)
+      storiesGallery.append(storiesEl)
     }
     else {
       let storiesElImg = document.createElement('img')
       storiesElImg.setAttribute('src', item.getAttribute('src'))
       storiesEl.append(storiesElImg)
-      storiesGalleri.append(storiesEl)
+      storiesGallery.append(storiesEl)
 
     }
   })
@@ -112,7 +112,7 @@ function createExitBtn () {
 
 }
 
-function createNextButton (storiesContainer, storiesGalleri, domEl) {
+function createNextButton (storiesContainer, storiesGallery, domEl) {
   if(window.croakAPP.buttonsParam) {
     
     let customNextArrow = document.querySelector(domEl).querySelector('.stories-next').cloneNode()
@@ -120,7 +120,7 @@ function createNextButton (storiesContainer, storiesGalleri, domEl) {
     storiesContainer.appendChild(customNextArrow)
     customNextArrow.classList.add('custom-right')
 
-    if(window.croakAPP.activeSlide == storiesGalleri.getElementsByClassName('galleri__el').length - 1) {
+    if(window.croakAPP.activeSlide == storiesGallery.getElementsByClassName('gallery__el').length - 1) {
       customNextArrow.setAttribute('disabled', true)
       customNextArrow.classList.add('btn_disabled')
     }
@@ -129,7 +129,7 @@ function createNextButton (storiesContainer, storiesGalleri, domEl) {
   }
 }
 
-function createPrevButton (storiesContainer, storiesGalleri, domEl) {
+function createPrevButton (storiesContainer, storiesGallery, domEl) {
   if(window.croakAPP.buttonsParam) {
 
     let customPrevArrow = document.querySelector(domEl).querySelector('.stories-prev').cloneNode()
@@ -146,22 +146,22 @@ function createPrevButton (storiesContainer, storiesGalleri, domEl) {
   }
 }
 
-function clickGalleri (storiesGalleri) {
+function clickGallery (storiesGallery) {
 
-  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
+  let storiesGalleryItems = storiesGallery.querySelectorAll('.gallery .gallery__el')
 
-  document.querySelectorAll('.galleri .galleri__el').forEach((element, indexEl) => {
+  document.querySelectorAll('.gallery .gallery__el').forEach((element, indexEl) => {
     element.addEventListener('click', (e) => {
 
-      storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
+      storiesGalleryItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
       window.croakAPP.activeSlide = indexEl
       e.currentTarget.classList.add('stories-el_active')
-      galleriSwipe(e.currentTarget, storiesGalleri)
+      gallerySwipe(e.currentTarget, storiesGallery)
 
       if(window.croakAPP.buttonsParam) {
         
-        let storiesContainer = storiesGalleri.parentElement.parentElement
+        let storiesContainer = storiesGallery.parentElement.parentElement
         let prevBtn = storiesContainer.querySelector('.stories-prev')
         let storiesNext = storiesContainer.querySelector('.stories-next')
         
@@ -173,7 +173,7 @@ function clickGalleri (storiesGalleri) {
           prevBtn.removeAttribute('disabled')
           prevBtn.classList.remove('btn_disabled')
         }
-        if(window.croakAPP.activeSlide == storiesGalleri.getElementsByClassName('galleri__el').length - 1) {
+        if(window.croakAPP.activeSlide == storiesGallery.getElementsByClassName('gallery__el').length - 1) {
           storiesNext.setAttribute('disabled', true)
           storiesNext.classList.add('btn_disabled')
         }
@@ -187,11 +187,10 @@ function clickGalleri (storiesGalleri) {
   })
 }
 
-function galleriSwipe(el, galleriEssence, deskSwipe) {
+function gallerySwipe(el, galleryEssence, deskSwipe) {
   
   let elRight = el.getBoundingClientRect().right
   el.parentElement.querySelectorAll('video').forEach((el) => {
-    el.removeAttribute('autoplay')
     el.pause()
   })
 
@@ -211,16 +210,17 @@ function galleriSwipe(el, galleriEssence, deskSwipe) {
     return elCenter <= ((window.innerWidth / 2) + (el.getBoundingClientRect().width / window.elementScale / 2)) && elCenter >= ((window.innerWidth / 2) - (el.getBoundingClientRect().width / window.elementScale / 2))
   }
 
-  let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
+  let distanceCheck = (galleryEssence.getBoundingClientRect().width / 2) - elRight
 
-  const galleriEssenceRect = galleriEssence.getBoundingClientRect();
+  const galleryEssenceRect = galleryEssence.getBoundingClientRect();
   const elRect = el.getBoundingClientRect();
-  let translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
-  galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
+  let translateX = -(distanceCheck + galleryEssenceRect.left + (elRect.width / 2));
 
-  let galleriScrW = galleriEssence.scrollWidth
-  let galleriWrapper = galleriEssence.parentElement
-  let galleriWrapperClW = galleriWrapper.clientWidth
+  galleryEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
+
+  let galleryScrW = galleryEssence.scrollWidth
+  let galleryWrapper = galleryEssence.parentElement
+  let galleryWrapperClW = galleryWrapper.clientWidth
 
   let startX = 0 
   let isActive = false
@@ -229,14 +229,21 @@ function galleriSwipe(el, galleriEssence, deskSwipe) {
   let diff = 0
   let counter = 0
 
-  let rightBoundary = (galleriWrapperClW - galleriScrW - elRect.width - elRect.width / 2)
-  let leftBoundary = -(galleriScrW - galleriWrapperClW + elRect.width + elRect.width / 2)
+  let rightBoundary = (galleryWrapperClW - galleryScrW - elRect.width - elRect.width / 2)
+  let leftBoundary = -(galleryScrW - galleryWrapperClW + elRect.width + elRect.width / 2)
 
   function startSwipe (e) {
     e.preventDefault()
 
-    galleriEssence.style.cursor = "grabbing"
+    galleryEssence.querySelectorAll('.gallery__el').forEach((el, index, array) => {
+      if(el.querySelector('video')) {
+        el.querySelector('video').pause()
+      }
+    })
+
+    galleryEssence.style.cursor = "grabbing"
     isActive = true
+    galleryEssence.classList.remove('gallery_transform')
 
     startX = e.clientX
   }
@@ -248,15 +255,7 @@ function galleriSwipe(el, galleriEssence, deskSwipe) {
 
     if(counter === 0) {
       prevDiff = -translateX
-      galleriEssence.querySelectorAll('.galleri__el').forEach((el, index, array) => {
-        el.classList.remove('stories-el_active')
-        el.style.pointerEvents = "none"
-        el.parentElement.querySelectorAll('video').forEach((el) => {
-          el.removeAttribute('autoplay')
-          el.pause()
-        })
-      })
-      galleriEssence.classList.remove('galleri_transform')
+      galleryEssence.querySelectorAll('.gallery__el')[window.croakAPP.activeSlide].classList.remove('stories-el_active')
       counter++
     }
 
@@ -270,30 +269,31 @@ function galleriSwipe(el, galleriEssence, deskSwipe) {
       diff += currDiff - (rightBoundary - 20)
     }
 
+    galleryEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
+
+  }
+  function endSwipe () {
     if(window.deskSwipeFocus) {
-      galleriEssence.querySelectorAll('.galleri__el').forEach((item, index, array) => {
+      galleryEssence.querySelectorAll('.gallery__el').forEach((item, index, array) => {
         if(checkCenter(item)) {
 
-            let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - item.getBoundingClientRect().right
+            let distanceCheck = (galleryEssence.getBoundingClientRect().width / 2) - item.getBoundingClientRect().right
 
-            const galleriEssenceRect = galleriEssence.getBoundingClientRect();
+            const galleryEssenceRect = galleryEssence.getBoundingClientRect();
             const elRect = item.getBoundingClientRect();
-            translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
+            translateX = -(distanceCheck + galleryEssenceRect.left + (elRect.width / 2));
 
             window.croakAPP.activeSlide = index
         }
       })
     }
 
-    galleriEssence.style.transform = `translate3d(${-diff}px, ${-50}%, 0)`
-
-  }
-  function endSwipe () {
     setTimeout(() => {
-      galleriEssence.classList.add('galleri_transform')
-      
-      galleriEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
-      let newActive = galleriEssence.getElementsByClassName('galleri__el')[window.croakAPP.activeSlide]
+
+      galleryEssence.classList.add('gallery_transform')
+      galleryEssence.style.transform = `translate3d(${-Math.round(translateX)}px, ${-50}%, 0)`
+
+      let newActive = galleryEssence.getElementsByClassName('gallery__el')[window.croakAPP.activeSlide]
       newActive.classList.add('stories-el_active')
       if(newActive.querySelector('video')) {
         newActive.querySelector('video').play()
@@ -301,37 +301,33 @@ function galleriSwipe(el, galleriEssence, deskSwipe) {
     }, 200)
 
     isActive = false
-    galleriEssence.style.cursor = "grab"
+    galleryEssence.style.cursor = "grab"
 
     prevDiff = -diff
-
-    galleriEssence.querySelectorAll('.galleri__el').forEach((el) => {
-      el.style.pointerEvents = "initial"
-    })
     counter = 0
   }
 
   if(window.innerWidth >= 768 && window.deskSwipe) {
-    galleriWrapper.addEventListener('mousedown', startSwipe)
-    galleriWrapper.addEventListener('mousemove', moveSwipe)
-    galleriWrapper.addEventListener('mouseup', endSwipe)
-    galleriWrapper.addEventListener('mouseleave', endSwipe)
+    galleryWrapper.addEventListener('mousedown', startSwipe)
+    galleryWrapper.addEventListener('mousemove', moveSwipe)
+    galleryWrapper.addEventListener('mouseup', endSwipe)
+    galleryWrapper.addEventListener('mouseleave', endSwipe)
   }
   if(window.innerWidth <= 768 && window.deskSwipe) {
-    galleriEssence.classList.add('galleri_transform')
+    galleryEssence.classList.add('gallery_transform')
   }
 
 }
 
-function nextClick(storiesGalleri) {
+function nextClick(storiesGallery) {
 
-  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
-  let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
+  let storiesGalleryItems = storiesGallery.querySelectorAll('.gallery .gallery__el')
+  let lengthEl = storiesGallery.querySelectorAll('.gallery .gallery__el').length
 
-  storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
+  storiesGalleryItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
   if(window.croakAPP.buttonsParam) {
-    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let storiesContainer = storiesGallery.parentElement.parentElement
     if(window.croakAPP.activeSlide <= 1) {
       let prevBtn = storiesContainer.querySelector('.stories-prev')
       prevBtn.removeAttribute('disabled')
@@ -348,20 +344,20 @@ function nextClick(storiesGalleri) {
 
     window.croakAPP.activeSlide += 1
 
-    let elActive = storiesGalleriItems[window.croakAPP.activeSlide]
+    let elActive = storiesGalleryItems[window.croakAPP.activeSlide]
     elActive.classList.add('stories-el_active')
-    galleriSwipe(elActive, storiesGalleri)
+    gallerySwipe(elActive, storiesGallery)
   }
 }
 
-function prevClick(storiesGalleri) {
+function prevClick(storiesGallery) {
 
-  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
+  let storiesGalleryItems = storiesGallery.querySelectorAll('.gallery .gallery__el')
 
   if(window.croakAPP.buttonsParam) {
 
-    let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
-    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let lengthEl = storiesGallery.querySelectorAll('.gallery .gallery__el').length
+    let storiesContainer = storiesGallery.parentElement.parentElement
     let storiesNext = storiesContainer.querySelector('.stories-next')
     let storiesprev = storiesContainer.querySelector('.stories-prev')
 
@@ -375,19 +371,19 @@ function prevClick(storiesGalleri) {
     }
   }
 
-  storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
+  storiesGalleryItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
   if(window.croakAPP.activeSlide != 0) {
     window.croakAPP.activeSlide -= 1
-    let elActive = storiesGalleriItems[window.croakAPP.activeSlide]
+    let elActive = storiesGalleryItems[window.croakAPP.activeSlide]
     elActive.classList.add('stories-el_active')
-    galleriSwipe(elActive, storiesGalleri)
+    gallerySwipe(elActive, storiesGallery)
   }
 }
 
-function clickExit (storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+function clickExit (storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd) {
   storiesOut.addEventListener('click', () => {
-    deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+    deleteGallery(startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd)
   })
 }
 
@@ -407,7 +403,7 @@ async function delContainer (storiesContainer) {
   }, 300)
 }
 
-function deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+function deleteGallery(startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd) {
   document.removeEventListener('keydown', keyEvent)
   startXSwipe = 0
   startYSwipe = 0
@@ -416,10 +412,10 @@ function deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGaller
   window.croakAPP.activeSlide = undefined
   delContainer(storiesContainer)
   enableScroll()
-  storiesGalleri.classList.remove('galleri_transform')
+  storiesGallery.classList.remove('gallery_transform')
   if(window.croakAPP.buttonsParam) {
 
-    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let storiesContainer = storiesGallery.parentElement.parentElement
     let prevBtn = storiesContainer.querySelector('.stories-prev')
     let storiesNext = storiesContainer.querySelector('.stories-next')
 
@@ -476,7 +472,7 @@ export class croakSlider {
     this.deskStories = false
     this.deskSwipeFocus = false
     this.deskSwipe = false
-    this.clickGalleri = false
+    this.clickGallery = false
 
     if(params.DOMElement) {
       this.DOMElement = params.DOMElement
@@ -510,8 +506,8 @@ export class croakSlider {
     if(params.deskSwipeFocus === true) {
       window.deskSwipeFocus = true
     }
-    if(params.clickGalleri === true) {
-      this.clickGalleri = true
+    if(params.clickGallery === true) {
+      this.clickGallery = true
     }
 
     if(this.DOMElement) {
@@ -525,8 +521,8 @@ export class croakSlider {
               disableScroll()
             }, 350)
 
-            let storiesGalleri = createGallery(this.gap)
-            createElements(array, storiesGalleri, this.scale, this.mobileVideo, this.deskStories)
+            let storiesGallery = createGallery(this.gap)
+            createElements(array, storiesGallery, this.scale, this.mobileVideo, this.deskStories)
 
             let storiesOut = createExitBtn()
             let storiesContainer = createContainer(this.buttons)
@@ -535,19 +531,19 @@ export class croakSlider {
             storiesWrapper.classList.add('stories-wrapper')
 
             if(!this.deskStories) {
-              storiesWrapper.classList.add('galleri-fullsize')
+              storiesWrapper.classList.add('gallery-fullsize')
             }
 
             storiesContainer.appendChild(storiesWrapper)
-            storiesWrapper.appendChild(storiesGalleri)
+            storiesWrapper.appendChild(storiesGallery)
             storiesContainer.appendChild(storiesOut)
-            storiesContainer.style.setProperty('--galleri-opacity', this.opacity)
+            storiesContainer.style.setProperty('--gallery-opacity', this.opacity)
 
-            if(storiesGalleri) {
-              storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide].classList.add('stories-el_active')
-              galleriSwipe(storiesGalleri.querySelectorAll('.galleri .galleri__el')[window.croakAPP.activeSlide], storiesGalleri, this.deskSwipe)
+            if(storiesGallery) {
+              storiesGallery.querySelectorAll('.gallery .gallery__el')[window.croakAPP.activeSlide].classList.add('stories-el_active')
+              gallerySwipe(storiesGallery.querySelectorAll('.gallery .gallery__el')[window.croakAPP.activeSlide], storiesGallery, this.deskSwipe)
               setTimeout(() => {
-                storiesGalleri.classList.add('galleri_transform')
+                storiesGallery.classList.add('gallery_transform')
               }, 200)
             }
 
@@ -568,49 +564,49 @@ export class croakSlider {
           
               if(Math.abs(diffX - diffY) > 0 && Math.abs(diffX) > dist) {
                 if(diffX > 0) {
-                  if(window.croakAPP.activeSlide === storiesGalleri.querySelectorAll('.galleri__el').length - 1) { 
+                  if(window.croakAPP.activeSlide === storiesGallery.querySelectorAll('.gallery__el').length - 1) { 
                     return
                   }
-                  nextClick(storiesGalleri)
+                  nextClick(storiesGallery)
                 }
                 else if(diffX < 0){
                   if(window.croakAPP.activeSlide === 0) { 
                     return
                   }
-                  prevClick(storiesGalleri)
+                  prevClick(storiesGallery)
                 }
               }
             }
 
             function keyEvent (event) {
               if(event.key === 'ArrowRight') {
-                nextClick(storiesGalleri)
+                nextClick(storiesGallery)
               }
               if(event.key === 'ArrowLeft') {
-                prevClick(storiesGalleri)
+                prevClick(storiesGallery)
               }
               if(event.key === 'd') {
-                nextClick(storiesGalleri)
+                nextClick(storiesGallery)
               }
               if(event.key === 'a') {
-                prevClick(storiesGalleri)
+                prevClick(storiesGallery)
               }
               if(event.key === 'Escape') {
-                deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+                deleteGallery(startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd)
               }
             }
 
-            clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+            clickExit(storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd)
 
             if(this.buttons) {
-              let nextBtn = createNextButton(storiesContainer, storiesGalleri, this.DOMElement)
-              let prevBtn = createPrevButton(storiesContainer, storiesGalleri, this.DOMElement)
+              let nextBtn = createNextButton(storiesContainer, storiesGallery, this.DOMElement)
+              let prevBtn = createPrevButton(storiesContainer, storiesGallery, this.DOMElement)
   
               nextBtn.addEventListener('click', () => {
-                nextClick(storiesGalleri)
+                nextClick(storiesGallery)
               })
               prevBtn.addEventListener('click', () => {
-                prevClick(storiesGalleri)
+                prevClick(storiesGallery)
               })
             }
 
@@ -625,8 +621,8 @@ export class croakSlider {
             document.addEventListener('touchstart', mobTouchStart)
             document.addEventListener('touchend', mobTouchEnd)
 
-            if(this.clickGalleri) {
-              clickGalleri(storiesGalleri)
+            if(this.clickGallery) {
+              clickGallery(storiesGallery)
             }
           })
         })
