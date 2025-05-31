@@ -1,8 +1,8 @@
 
-import { deleteGalleri } from "../delete/deleteGalleri.js"
+import { deleteGallery } from "../delete/deleteGallery.js"
 
-export function clickExit (storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+export function clickExit (storiesOut, startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd) {
   storiesOut.addEventListener('click', () => {
-    deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd)
+    deleteGallery(startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd)
   })
 }

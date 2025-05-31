@@ -139,17 +139,17 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 
 <!-- # How does it work?
 
-- the main logic hides behind galleriSwipe function
+- the main logic hides behind gallerySwipe function
 - simply put, the function counts the distance between the center of the screen and the element's distance from the right screen corner
 
 - code fragment: 
 ```
-  let distanceCheck = (galleriEssence.getBoundingClientRect().width / 2) - elRight
+  let distanceCheck = (galleryEssence.getBoundingClientRect().width / 2) - elRight
 
-  const galleriEssenceRect = galleriEssence.getBoundingClientRect();
+  const galleryEssenceRect = galleryEssence.getBoundingClientRect();
   const elRect = el.getBoundingClientRect();
-  const translateX = -(distanceCheck + galleriEssenceRect.left + (elRect.width / 2));
-  galleriEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
+  const translateX = -(distanceCheck + galleryEssenceRect.left + (elRect.width / 2));
+  galleryEssence.style.transform = `translate3d(${-translateX}px, ${-50}%, 0)`
 ``` -->
 
 # Showcase:

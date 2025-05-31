@@ -2,7 +2,7 @@
 import { delContainer } from "./deleteContainer.js"
 import { enableScroll } from "../appControl/scrollControl.js"
 
-export function deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storiesGalleri, keyEvent, mobTouchStart, mobTouchEnd) {
+export function deleteGallery(startXSwipe, startYSwipe, storiesContainer, storiesGallery, keyEvent, mobTouchStart, mobTouchEnd) {
   document.removeEventListener('keydown', keyEvent)
   startXSwipe = 0
   startYSwipe = 0
@@ -11,10 +11,10 @@ export function deleteGalleri(startXSwipe, startYSwipe, storiesContainer, storie
   window.croakAPP.activeSlide = undefined
   delContainer(storiesContainer)
   enableScroll()
-  storiesGalleri.classList.remove('galleri_transform')
+  storiesGallery.classList.remove('gallery_transform')
   if(window.croakAPP.buttonsParam) {
 
-    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let storiesContainer = storiesGallery.parentElement.parentElement
     let prevBtn = storiesContainer.querySelector('.stories-prev')
     let storiesNext = storiesContainer.querySelector('.stories-next')
 

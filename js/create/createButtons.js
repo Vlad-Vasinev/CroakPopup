@@ -1,5 +1,5 @@
 
-export function createNextButton (storiesContainer, storiesGalleri, domEl) {
+export function createNextButton (storiesContainer, storiesGallery, domEl) {
   if(window.croakAPP.buttonsParam) {
     
     let customNextArrow = document.querySelector(domEl).querySelector('.stories-next').cloneNode()
@@ -7,7 +7,7 @@ export function createNextButton (storiesContainer, storiesGalleri, domEl) {
     storiesContainer.appendChild(customNextArrow)
     customNextArrow.classList.add('custom-right')
 
-    if(window.croakAPP.activeSlide == storiesGalleri.getElementsByClassName('galleri__el').length - 1) {
+    if(window.croakAPP.activeSlide == storiesGallery.getElementsByClassName('gallery__el').length - 1) {
       customNextArrow.setAttribute('disabled', true)
       customNextArrow.classList.add('btn_disabled')
     }
@@ -16,7 +16,7 @@ export function createNextButton (storiesContainer, storiesGalleri, domEl) {
   }
 }
 
-export function createPrevButton (storiesContainer, storiesGalleri, domEl) {
+export function createPrevButton (storiesContainer, storiesGallery, domEl) {
   if(window.croakAPP.buttonsParam) {
 
     let customPrevArrow = document.querySelector(domEl).querySelector('.stories-prev').cloneNode()

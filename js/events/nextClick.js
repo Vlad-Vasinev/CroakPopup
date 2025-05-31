@@ -1,14 +1,14 @@
-import { galleriSwipe } from "./galleriSwipe.js"
+import { gallerySwipe } from "./gallerySwipe.js"
 
-export function nextClick(storiesGalleri) {
+export function nextClick(storiesGallery) {
 
-  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
-  let lengthEl = storiesGalleri.querySelectorAll('.galleri .galleri__el').length
+  let storiesGalleryItems = storiesGallery.querySelectorAll('.gallery .gallery__el')
+  let lengthEl = storiesGallery.querySelectorAll('.gallery .gallery__el').length
 
-  storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
+  storiesGalleryItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
   if(window.croakAPP.buttonsParam) {
-    let storiesContainer = storiesGalleri.parentElement.parentElement
+    let storiesContainer = storiesGallery.parentElement.parentElement
     if(window.croakAPP.activeSlide <= 1) {
       let prevBtn = storiesContainer.querySelector('.stories-prev')
       prevBtn.removeAttribute('disabled')
@@ -25,8 +25,8 @@ export function nextClick(storiesGalleri) {
 
     window.croakAPP.activeSlide += 1
 
-    let elActive = storiesGalleriItems[window.croakAPP.activeSlide]
+    let elActive = storiesGalleryItems[window.croakAPP.activeSlide]
     elActive.classList.add('stories-el_active')
-    galleriSwipe(elActive, storiesGalleri)
+    gallerySwipe(elActive, storiesGallery)
   }
 }

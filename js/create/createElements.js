@@ -1,16 +1,16 @@
 
-export function createElements (array, storiesGalleri, scale, mobVideo, deskStories) {
+export function createElements (array, storiesGallery, scale, mobVideo, deskStories) {
   
   array.forEach((item) => {
 
     let storiesEl = document.createElement('div')
     if(deskStories && window.innerWidth >= 768) {
-      storiesEl.classList.add('galleri__el')
-      storiesEl.classList.add('galleri__el_stories')
+      storiesEl.classList.add('gallery__el')
+      storiesEl.classList.add('gallery__el_stories')
       storiesEl.style.setProperty('--img-scale', scale)
     }
     else {
-      storiesEl.classList.add('galleri__el')
+      storiesEl.classList.add('gallery__el')
       storiesEl.style.setProperty('--img-scale', scale)
     }
 
@@ -62,13 +62,13 @@ export function createElements (array, storiesGalleri, scale, mobVideo, deskStor
       storiesElVideo.appendChild(sourceElement2)
       storiesElVideo.setAttribute('preload', true)
       storiesEl.append(storiesElVideo)
-      storiesGalleri.append(storiesEl)
+      storiesGallery.append(storiesEl)
     }
     else {
       let storiesElImg = document.createElement('img')
       storiesElImg.setAttribute('src', item.getAttribute('src'))
       storiesEl.append(storiesElImg)
-      storiesGalleri.append(storiesEl)
+      storiesGallery.append(storiesEl)
 
     }
   })

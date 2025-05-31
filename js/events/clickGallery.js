@@ -1,21 +1,21 @@
-import { galleriSwipe } from "./galleriSwipe.js"
+import { gallerySwipe } from "./gallerySwipe.js"
 
-export function clickGalleri (storiesGalleri) {
+export function clickGallery (storiesGallery) {
 
-  let storiesGalleriItems = storiesGalleri.querySelectorAll('.galleri .galleri__el')
+  let storiesGalleryItems = storiesGallery.querySelectorAll('.gallery .gallery__el')
 
-  document.querySelectorAll('.galleri .galleri__el').forEach((element, indexEl) => {
+  document.querySelectorAll('.gallery .gallery__el').forEach((element, indexEl) => {
     element.addEventListener('click', (e) => {
 
-      storiesGalleriItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
+      storiesGalleryItems[window.croakAPP.activeSlide].classList.remove('stories-el_active')
 
       window.croakAPP.activeSlide = indexEl
       e.currentTarget.classList.add('stories-el_active')
-      galleriSwipe(e.currentTarget, storiesGalleri)
+      gallerySwipe(e.currentTarget, storiesGallery)
 
       if(window.croakAPP.buttonsParam) {
         
-        let storiesContainer = storiesGalleri.parentElement.parentElement
+        let storiesContainer = storiesGallery.parentElement.parentElement
         let prevBtn = storiesContainer.querySelector('.stories-prev')
         let storiesNext = storiesContainer.querySelector('.stories-next')
         
@@ -27,7 +27,7 @@ export function clickGalleri (storiesGalleri) {
           prevBtn.removeAttribute('disabled')
           prevBtn.classList.remove('btn_disabled')
         }
-        if(window.croakAPP.activeSlide == storiesGalleri.getElementsByClassName('galleri__el').length - 1) {
+        if(window.croakAPP.activeSlide == storiesGallery.getElementsByClassName('gallery__el').length - 1) {
           storiesNext.setAttribute('disabled', true)
           storiesNext.classList.add('btn_disabled')
         }
