@@ -222,6 +222,22 @@ html {
 /*
   slider styles
 */
+h4 {
+  text-align: center;
+}
+
+[data-croak-container-custom] {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+[data-croak-container-custom] img, video {
+  cursor: pointer;
+  width: calc(66.6666666667px + 33.3333333333 * (100vw - 1280px) / 640);
+  height: calc(66.6666666667px + 33.3333333333 * (100vw - 1280px) / 640);
+}
+
 [data-croak-container] {
   display: grid;
   justify-content: center;

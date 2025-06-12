@@ -212,3 +212,13 @@ let frog = new croakSlider({
   keyboard: true,
   //buttons: true,
 });
+
+let frog2 = new croakSlider({
+  DOMElement: "div[data-croak-container-custom]",
+  gap: 10,
+  scale: .75,
+  opacity: 0.95,
+  deskStories: true,
+  deskSwipe: true,   // works only when "clickGallery" is turned of
+  deskSwipeFocus: true,
+});
