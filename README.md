@@ -160,6 +160,7 @@ in order to set **`gap`** between slides, **`scale`** of slides and **`opacity`*
 |                                     | https://codepen.io/Vlad_Vasinev/pen/zxYbzmz | **`click-gallery`**, **`keyboard`**, **`buttons`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/ByaKboN | **`mobile`**, **`keyboard`**|
 |                                     | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`desktop`**, **`desktop-swipe`**|
+| https://croak-popup-v1.vercel.app/multipleCroak.html                                    | https://codepen.io/Vlad_Vasinev/pen/RNwKKGM | **`desktop-swipe`**, **`multiple-popup`**|
 
 # Tutorial:
 
